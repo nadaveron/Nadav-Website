@@ -86,12 +86,11 @@ d.line([X(470), Y(545), X(430), Y(650)], fill=TAN, width=7 * S)
 
 # riq
 QX, QY, QR = 215, 725, 104
-for k in range(5):  # jingle pairs, larger than the frame so they stick out of it
+for k in range(5):  # jingles, larger than the frame so they stick out of it
     a = 2 * math.pi * k / 5 - math.pi / 2 + .3
-    for off in (-.17, .17):
-        jx, jy = polar(QX, QY, QR + 4, a + off)
-        circ(jx, jy, 21, fill=(186, 150, 74)); ring(jx, jy, 21, 1.4, CREAM)
-        ring(jx, jy, 12, 1, (140, 108, 48)); circ(jx, jy, 3, fill=CREAM)
+    jx, jy = polar(QX, QY, QR + 6, a)  # each stacked pair reads as one jingle from above
+    circ(jx, jy, 28, fill=(186, 150, 74)); ring(jx, jy, 28, 1.6, CREAM)
+    ring(jx, jy, 16, 1, (140, 108, 48)); circ(jx, jy, 4, fill=CREAM)
 circ(QX, QY, QR, fill=mix(WOOD, TAN, .25)); ring(QX, QY, QR, 2.4)
 circ(QX, QY, QR - 14, fill=(168, 148, 116)); ring(QX, QY, QR - 14, 1.6, CREAM)
 rq = random.Random(4)

@@ -9,7 +9,7 @@ W, H = 1600 * S, 2400 * S
 F = 'fonts/'  # Cormorant Garamond and EB Garamond variable TTFs from Google Fonts
 LOGO = 'public/assets/img/logo.webp'
 OUT = 'design/book-cover-middle-eastern-drum-set.png'
-TAN = (200, 164, 126); SOFT = (168, 140, 108); CREAM = (234, 220, 203); BG = (8, 7, 6)
+TAN = (200, 164, 126); SOFT = (168, 140, 108); CREAM = (234, 220, 203); BG = (44, 40, 36)   # warm charcoal, lighter than the site's black
 BRONZE = (120, 92, 58); WOOD = (92, 66, 42); SKIN = (58, 46, 34); INK = (24, 30, 44)
 
 def font(name, size, wght):
@@ -55,10 +55,6 @@ for gx in range(230, 1800, 120):
             d.regular_polygon((X(gx), Y(gy), R(20)), 4, rotation=rot, outline=(52, 64, 92), width=S)
         circ(gx, gy, 5, fill=dim(TAN, .35))
         d.regular_polygon((X(gx + 60), Y(gy + 60), R(9)), 4, rotation=45, fill=dim(TAN, .22))
-# medallion
-for rr, col in ((330, dim(TAN, .4)), (250, dim(TAN, .32)), (170, (60, 74, 104))):
-    pts = [polar(1000, 695, rr * (1 if k % 2 == 0 else .62), k * math.pi / 8) for k in range(16)]
-    d.polygon([(X(x), Y(y)) for x, y in pts], outline=col, width=S)
 
 # --- instruments ---
 def shadow(x, y, r):
@@ -66,7 +62,7 @@ def shadow(x, y, r):
     sd.ellipse([X(x) - R(r) + 10 * S, Y(y) - R(r) + 16 * S, X(x) + R(r) + 10 * S, Y(y) + R(r) + 16 * S], fill=150)
     return sh.filter(ImageFilter.GaussianBlur(14 * S))
 shadows = Image.new('L', (W, H), 0)
-for x, y, r in ((505, 470, 225), (260, 680, 110), (1048, 500, 168), (1205, 893, 210), (1530, 325, 385),
+for x, y, r in ((505, 470, 225), (215, 725, 128), (1048, 500, 168), (1205, 893, 210), (1530, 325, 385),
                 (1655, 1035, 345), (215, 1105, 210), (420, 1020, 100)):
     shadows = Image.composite(Image.new('L', (W, H), 255), shadows, shadow(x, y, r))
 img = Image.composite(Image.new('RGB', (W, H), (0, 0, 0)), img, shadows.point(lambda v: int(v * .55)))
@@ -89,13 +85,19 @@ circ(485, 520, 46, fill=BRONZE); ring(485, 520, 46, 1.2, TAN)
 d.line([X(470), Y(545), X(430), Y(650)], fill=TAN, width=7 * S)
 
 # riq
-circ(260, 680, 108, fill=WOOD); ring(260, 680, 108, 2.2)
-circ(260, 680, 86, fill=(70, 62, 52)); ring(260, 680, 86, 1, SOFT)
-for k in range(5):
-    a = 2 * math.pi * k / 5 + .5
-    for off in (-.14, .14):
-        px, py = polar(260, 680, 97, a + off)
-        circ(px, py, 13, fill=(150, 120, 60)); ring(px, py, 13, 1.2, CREAM)
+QX, QY, QR = 215, 725, 125
+circ(QX, QY, QR, fill=WOOD); ring(QX, QY, QR, 2.4)
+circ(QX, QY, QR - 34, fill=(156, 138, 114)); ring(QX, QY, QR - 34, 1.2, SOFT)
+for k in range(5):  # five slots, each with a pair of brass jingles
+    a = 2 * math.pi * k / 5 - math.pi / 2 + .3
+    cx, cy = polar(QX, QY, QR - 17, a)
+    tx, ty = -math.sin(a), math.cos(a); nx, ny = math.cos(a), math.sin(a)
+    corners = [(cx + tx * u + nx * v, cy + ty * u + ny * v) for u, v in ((-30, -12), (30, -12), (30, 12), (-30, 12))]
+    d.polygon([(X(px), Y(py)) for px, py in corners], fill=(30, 22, 16))
+    for u in (-12, 12):
+        jx, jy = cx + tx * u, cy + ty * u
+        circ(jx, jy, 13, fill=(204, 168, 78)); ring(jx, jy, 13, 1.2, CREAM); ring(jx, jy, 6, 1, (150, 118, 50))
+    d.line([X(cx - tx * 28), Y(cy - ty * 28), X(cx + tx * 28), Y(cy + ty * 28)], fill=(90, 80, 70), width=S)
 
 # bass drum pedal
 pts = [(805, 360), (845, 360), (850, 470), (868, 560), (858, 655), (812, 655), (800, 560), (815, 470)]
@@ -103,13 +105,9 @@ d.polygon([(X(a), Y(b)) for a, b in pts], fill=(70, 66, 62), outline=TAN, width=
 d.line([X(826), Y(360), X(826), Y(300)], fill=SOFT, width=4 * S)
 circ(826, 300, 16, fill=SOFT)
 
-# two hide drums: a white goat skin and a spotted one
+# two hide drums
 hide_drum(1048, 500, 168, (176, 160, 138))
-hide_drum(1205, 893, 210, (150, 128, 102), 10)
-for _ in range(16):  # spots
-    a = random.uniform(0, 2 * math.pi); rr = random.uniform(0, 140)
-    px, py = polar(1205, 893, rr, a); w_, h_ = random.uniform(20, 55), random.uniform(14, 40)
-    d.ellipse([X(px - w_), Y(py - h_), X(px + w_), Y(py + h_)], fill=(52, 36, 24))
+hide_drum(1205, 893, 210, (164, 142, 114), 10)
 
 # cajon
 d.rectangle([X(600), Y(850), X(945), Y(1225)], fill=mix(WOOD, TAN, .45), outline=TAN, width=2 * S)
@@ -123,15 +121,25 @@ circ(420, 1020, 98, fill=(120, 74, 46)); ring(420, 1020, 98, 2, TAN)
 for k in range(9):
     a = -1.0 + k * .25
     d.line([X(420), Y(1020), *[X(v) if i == 0 else Y(v) for i, v in enumerate(polar(420, 1020, 92, a))]], fill=dim(CREAM, .5), width=S)
+circ(255, 1165, 222, fill=(104, 58, 34)); ring(255, 1165, 222, 1.6, dim(TAN, .8))
+for k in range(36):  # painted dots on the bowl
+    px, py = polar(255, 1165, 204, 2 * math.pi * k / 36)
+    circ(px, py, 5, fill=dim(CREAM, .7))
+ring(255, 1165, 188, 1, dim(CREAM, .45))
+circ(215, 1105, 200, fill=(170, 98, 58)); ring(215, 1105, 200, 2.4)
+for k in range(30):  # painted triangles on the rim
+    a0 = 2 * math.pi * k / 30
+    tri = [polar(215, 1105, 196, a0 - .07), polar(215, 1105, 196, a0 + .07), polar(215, 1105, 176, a0)]
+    d.polygon([(X(px), Y(py)) for px, py in tri], fill=CREAM if k % 2 else (120, 52, 32))
 glow = Image.new('RGB', (W, H), (0, 0, 0)); gm = Image.new('L', (W, H), 0); gd = ImageDraw.Draw(gm)
 for i in range(40):
-    rr = 200 * (1 - i / 40)
+    rr = 168 * (1 - i / 40)
     gd.ellipse([X(215) - R(rr), Y(1105) - R(rr), X(215) + R(rr), Y(1105) + R(rr)], fill=int(90 + 160 * i / 40))
 gm = gm.filter(ImageFilter.GaussianBlur(10 * S))
-circ(215, 1105, 210, fill=(96, 62, 34)); ring(215, 1105, 210, 2.4)
+circ(215, 1105, 170, fill=(110, 70, 40))
 img.paste(Image.new('RGB', (W, H), (238, 178, 92)), (0, 0), gm.point(lambda v: int(v * .9)))
 d = ImageDraw.Draw(img)
-ring(215, 1105, 188, 1.2, CREAM)
+ring(215, 1105, 170, 1.6, CREAM)
 
 def sheen(x, y, r):
     global img, d
@@ -174,7 +182,23 @@ for dx in (0, 22):
         a = math.radians(38 + k * 3)
         d.line([X(1175 + dx), Y(1265), X(1175 + dx + 110 * math.cos(a)), Y(1265 + 110 * math.sin(a))], fill=dim(CREAM, .8), width=S)
 
-# keep the drawing inside the rug and soften its edge into the page
+# two straw brooms lying beside the brushes
+def broom(x0, y0, ang, seed):
+    rnd = random.Random(seed)
+    ux, uy = math.cos(math.radians(ang)), math.sin(math.radians(ang))
+    hx, hy = x0 + ux * 120, y0 + uy * 120          # end of the bound handle
+    for k in range(-6, 7):                        # tight bundle
+        ox, oy = -uy * k * 2.4, ux * k * 2.4
+        d.line([X(x0 + ox), Y(y0 + oy), X(hx + ox), Y(hy + oy)], fill=mix((206, 168, 96), (150, 112, 54), rnd.random()), width=S * 2)
+    for t in (10, 55, 104):                       # thread bindings
+        bx, by = x0 + ux * t, y0 + uy * t
+        d.line([X(bx - uy * 17), Y(by + ux * 17), X(bx + uy * 17), Y(by - ux * 17)], fill=(150, 56, 40), width=S * 3)
+    for _ in range(150):                          # the fanned straw
+        a = math.radians(ang + rnd.uniform(-20, 20)); L = rnd.uniform(150, 215)
+        d.line([X(hx), Y(hy), X(hx + math.cos(a) * L), Y(hy + math.sin(a) * L)], fill=mix((222, 186, 110), (160, 120, 60), rnd.random()), width=S)
+broom(560, 1268, 4, 1)
+broom(610, 1318, -4, 2)
+
 
 # grain
 noise = Image.effect_noise((W // 4, H // 4), 18).resize((W, H)).convert('L')
@@ -194,12 +218,12 @@ text_c(150, 'NADAV FRIEDMAN', font('EBGaramond[wght].ttf', 34, 500), SOFT, track
 text_c(300, 'THE MIDDLE-EASTERN', font('CormorantGaramond[wght].ttf', 74, 500), TAN, track=7)
 text_c(380, 'Drum Set', font('CormorantGaramond[wght].ttf', 230, 500), CREAM)
 d.line([700 * S, 670 * S, 900 * S, 670 * S], fill=SOFT, width=S)
-sub = font('EBGaramond-Italic[wght].ttf', 40, 400)
-text_c(1930, 'Bringing the oral traditions of rhythm', sub, TAN)
-text_c(1983, 'to the modern drum set', sub, TAN)
-logo = Image.open(LOGO).convert('RGBA'); lh = 125 * S
+sub = font('EBGaramond-Italic[wght].ttf', 50, 400)
+text_c(1900, 'Bringing the oral traditions of rhythm', sub, TAN)
+text_c(1966, 'to the modern drum set', sub, TAN)
+logo = Image.open(LOGO).convert('RGBA'); lh = 175 * S
 logo = logo.resize((int(logo.width * lh / logo.height), lh), Image.LANCZOS)
-img.paste(logo, ((W - logo.width) // 2, 2120 * S), logo)
+img.paste(logo, ((W - logo.width) // 2, 2080 * S), logo)
 d.rectangle([48 * S, 48 * S, W - 48 * S, H - 48 * S], outline=dim(TAN, .55), width=S)
 
 img.resize((1600, 2400), Image.LANCZOS).save(OUT)

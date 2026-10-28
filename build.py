@@ -52,12 +52,12 @@ def build():
         raw = page.read_text(encoding="utf-8")
         m = re.match(r"<!--\s*(\{.*?\})\s*-->\n", raw)
         meta = json.loads(m.group(1))
-        html = (layout.replace("{{title}}", meta["title"])
+        html = (layout.replace("{{body}}", raw[m.end():].rstrip())  # first, so pages can use {{icons}} too
+                      .replace("{{title}}", meta["title"])
                       .replace("{{description}}", meta["description"])
                       .replace("{{path}}", meta["path"])
                       .replace("{{nav}}", nav_html(meta["nav"]))
-                      .replace("{{icons}}", icons_html())
-                      .replace("{{body}}", raw[m.end():].rstrip()))
+                      .replace("{{icons}}", icons_html()))
         # Pages that already invite to the WhatsApp group can drop the closing band
         if meta.get("whatsapp", True):
             html = html.replace("<!--wa-->", "").replace("<!--/wa-->\n", "")

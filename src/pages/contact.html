@@ -1,21 +1,11 @@
 <!-- {"title": "Contact · Nadav Friedman", "description": "Book percussionist Nadav Friedman for concerts, recordings, productions, lessons and masterclasses.", "nav": "contact", "path": "/contact"} -->
-<section class="page-title">
-  <div class="wrap">
-    <div class="copy">
-      <span class="kicker">Get in touch</span>
-      <h1>Contact</h1>
-      <hr class="rule">
-      <p>Percussion for your concert or recording, an original production for your venue or festival, Bombaras, lessons or press. A few lines are enough to start.</p>
-    </div>
-    <figure class="whole">
-      <img src="assets/photos/contact-cymbal.jpg" alt="Close-up of a drumstick resting on a cymbal in low light" width="1500" height="2000">
-      <figcaption>photo · Susana Jiménez</figcaption>
+<section class="section contact-page" aria-labelledby="contact-title">
+  <div class="wrap contact-layout">
+    <h1 id="contact-title" class="sr-title">Contact</h1>
+    <figure class="whole contact-photo">
+      <img src="assets/photos/contact-cymbal.jpg" alt="Close-up of a drumstick resting on a cymbal in low light" width="1500" height="2000" fetchpriority="high">
+      <figcaption class="credit">photo · Susana Jiménez</figcaption>
     </figure>
-  </div>
-</section>
-
-<section class="section tight" aria-label="Contact options">
-  <div class="wrap contact-grid">
     <form class="contact" id="contact-form" novalidate>
       <div class="row2">
         <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -39,11 +29,8 @@
       <div class="actions"><button class="btn" type="submit">Send message</button></div>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
-    <div class="direct">
-      <div class="item"><span class="k">Email</span><div class="v"><span id="email-text">nadaveron@gmail.com</span><button class="copy-btn" type="button" data-copy="email-text">Copy</button></div></div>
-      <div class="item"><span class="k">Show updates</span><div class="v"><a class="btn small" href="https://chat.whatsapp.com/GjGj4pwP7kKLCDzW4AS8f1" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Join the WhatsApp group</a></div></div>
-      <div class="item"><span class="k">Lessons</span><div class="v"><a class="more" href="https://calendly.com/nadavfriedman/privatelessons" target="_blank" rel="noopener">Pick a time on Calendly</a></div></div>
-      <div class="item"><span class="k">Presenters and press</span><div class="v"><a class="more" href="https://drive.google.com/drive/folders/1A_PcJgzDMcSuGDMQdhq-y6S2Z4j4Alj1" target="_blank" rel="noopener">Press kit, photos and riders</a></div></div>
-    </div>
+  </div>
+  <div class="wrap">
+    <div class="icons contact-icons">{{icons}}</div>
   </div>
 </section>

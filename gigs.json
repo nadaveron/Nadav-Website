@@ -1,0 +1,384 @@
+{
+  "past_days": 92,
+  "exclude": [
+    "הקלט",
+    "חזרה",
+    "זום",
+    "פגישה",
+    "צילומים",
+    "ראיון",
+    "רילז",
+    "עבודה",
+    "ייעוץ",
+    "שיעור",
+    "סדנ",
+    "\\?"
+  ],
+  "artists": [
+    {
+      "match": "בומבראס|בומבראש",
+      "title": "Bombaras",
+      "project": "Bombaras"
+    },
+    {
+      "match": "אנסמבל גליל|ג׳ושוע אהרון|ג'ושוע אהרון",
+      "title": "Galilee Ensemble with Joshua Aaron",
+      "project": ""
+    },
+    {
+      "match": "איתי ארמון|איתי ערמון|עם איתי",
+      "title": "Itai Armon Ensemble",
+      "project": ""
+    },
+    {
+      "match": "רותם כהן",
+      "title": "Rotem Cohen",
+      "project": ""
+    },
+    {
+      "match": "בוסקילה",
+      "title": "Shimon Buskila",
+      "project": ""
+    },
+    {
+      "match": "פלייגראונד",
+      "title": "Playground Trio",
+      "project": "Playground Trio"
+    },
+    {
+      "match": "ליהי טולדנו",
+      "title": "Lihi Toledano",
+      "project": ""
+    },
+    {
+      "match": "הרינגמן",
+      "title": "Haringman Collective",
+      "project": ""
+    },
+    {
+      "match": "גוטה גוטה",
+      "title": "Gute Gute",
+      "project": ""
+    },
+    {
+      "match": "נועם טביב",
+      "title": "Noam Tabib",
+      "project": ""
+    },
+    {
+      "match": "קולולם",
+      "title": "Kululam",
+      "project": ""
+    },
+    {
+      "match": "תמר ודוד|דוד ותמר",
+      "title": "David Lavi & Tamar Philosof",
+      "project": ""
+    }
+  ],
+  "places": [
+    {
+      "match": "דה הופ",
+      "venue": "The Home",
+      "city": "Ashkelon"
+    },
+    {
+      "match": "Pavilion|פוויליון",
+      "venue": "Pavilion, Clal Center",
+      "city": "Jerusalem"
+    },
+    {
+      "match": "פילבית",
+      "venue": "FeelBeit",
+      "city": "Jerusalem"
+    },
+    {
+      "match": "טרב",
+      "venue": "TRB",
+      "city": "Tel Aviv"
+    },
+    {
+      "match": "בית הקונפדרציה",
+      "venue": "Confederation House",
+      "city": "Jerusalem"
+    },
+    {
+      "match": "בית מזרח מערב",
+      "venue": "East-West House",
+      "city": "Jaffa"
+    },
+    {
+      "match": "זאפה חיפה",
+      "venue": "Zappa",
+      "city": "Haifa"
+    },
+    {
+      "match": "זאפה ירושלים",
+      "venue": "Zappa",
+      "city": "Jerusalem"
+    },
+    {
+      "match": "זאפה תל אביב",
+      "venue": "Zappa",
+      "city": "Tel Aviv"
+    },
+    {
+      "match": "זיגמונד",
+      "venue": "Zigmund",
+      "city": "Haifa"
+    },
+    {
+      "match": "טוסיק",
+      "venue": "Tusik",
+      "city": "Haifa"
+    },
+    {
+      "match": "בארבי",
+      "venue": "Barby",
+      "city": "Tel Aviv"
+    },
+    {
+      "match": "בלה צ׳או|בלה צ'או",
+      "venue": "Bella Ciao"
+    },
+    {
+      "match": "פולג",
+      "venue": "Alaya",
+      "city": "Poleg, Netanya"
+    },
+    {
+      "match": "ראשון באגם",
+      "venue": "Lake Park",
+      "city": "Rishon LeZion"
+    },
+    {
+      "match": "מגדלור",
+      "venue": "HaMigdalor"
+    },
+    {
+      "match": "קיבוץ גת",
+      "city": "Kibbutz Gat"
+    },
+    {
+      "match": "גבעת ברנר",
+      "city": "Givat Brenner"
+    },
+    {
+      "match": "תיאטרון ירושלים",
+      "venue": "Jerusalem Theatre",
+      "city": "Jerusalem"
+    },
+    {
+      "match": "מפלצת",
+      "venue": "HaMiflatzet"
+    },
+    {
+      "match": "פסטיבל סופי",
+      "venue": "Sufi Festival"
+    },
+    {
+      "match": "האנגר 11",
+      "venue": "Hangar 11",
+      "city": "Tel Aviv"
+    },
+    {
+      "match": "בית היוצר",
+      "venue": "Beit HaYotzer",
+      "city": "Tel Aviv"
+    },
+    {
+      "match": "טסה",
+      "venue": "Tassa",
+      "city": "Tel Aviv"
+    },
+    {
+      "match": "מזקקה",
+      "venue": "HaMazkeka",
+      "city": "Jerusalem"
+    },
+    {
+      "match": "מנזר לטרון",
+      "venue": "Latrun Monastery"
+    },
+    {
+      "match": "נווה אילן",
+      "venue": "Kedma",
+      "city": "Neve Ilan"
+    },
+    {
+      "match": "נוף הגליל",
+      "city": "Nof HaGalil"
+    },
+    {
+      "match": "יקנעם",
+      "city": "Yokneam"
+    },
+    {
+      "match": "גן שומרון",
+      "city": "Gan Shomron"
+    },
+    {
+      "match": "נתניה",
+      "city": "Netanya"
+    },
+    {
+      "match": "ממשית",
+      "city": "Mamshit"
+    },
+    {
+      "match": "ראש פינ",
+      "city": "Rosh Pinna"
+    },
+    {
+      "match": "אילת",
+      "city": "Eilat"
+    },
+    {
+      "match": "יבנה",
+      "city": "Yavne"
+    },
+    {
+      "match": "רמת החייל",
+      "city": "Ramat HaHayal, Tel Aviv"
+    },
+    {
+      "match": "אשקלון",
+      "city": "Ashkelon"
+    },
+    {
+      "match": "חיפה",
+      "city": "Haifa"
+    },
+    {
+      "match": "תל אביב",
+      "city": "Tel Aviv"
+    },
+    {
+      "match": "ירושלים",
+      "city": "Jerusalem"
+    },
+    {
+      "match": "באר טוביה",
+      "city": "Be'er Tuvia"
+    },
+    {
+      "match": "אשדוד",
+      "city": "Ashdod"
+    },
+    {
+      "match": "רעננה",
+      "city": "Ra'anana"
+    },
+    {
+      "match": "משאבי שדה",
+      "city": "Mashabei Sadeh"
+    },
+    {
+      "match": "להבות הבשן",
+      "city": "Lehavot HaBashan"
+    },
+    {
+      "match": "יבניאל",
+      "city": "Yavne'el"
+    },
+    {
+      "match": "רוחמה",
+      "city": "Ruhama"
+    },
+    {
+      "match": "עין גדי",
+      "city": "Ein Gedi"
+    },
+    {
+      "match": "נס ציונה",
+      "city": "Nes Ziona"
+    },
+    {
+      "match": "בית שאן",
+      "city": "Beit She'an"
+    },
+    {
+      "match": "מודיעין",
+      "city": "Modi'in"
+    }
+  ],
+  "events": {
+    "E3FC5AA9-4CB1-4EB8-9CA1-979DF92DA972": {
+      "title": "Mirror",
+      "project": "Original production",
+      "venue": "FeelBeit terrace, Shift Festival",
+      "city": "Jerusalem",
+      "note": "With Orel Oshrat, Musa Abbasi, Luay Abbasi and guest Neomi Maggeni"
+    },
+    "54D5E946-D421-40AE-A352-7864BE082EF3": {
+      "venue": "Pavilion, Clal Center",
+      "city": "Jerusalem"
+    },
+    "2A95EB8E-D463-4420-AB23-2AEBB0EE97D5": {
+      "venue": "Yavne Culture Hall"
+    },
+    "725E3F33-7BB8-45B5-A4EE-05149525DFA8": {
+      "note": "Album launch"
+    },
+    "92AEF35A-D794-4478-9CCF-DC2EABA76776": {
+      "time": "20:30",
+      "venue": "Karmiel Culture Hall",
+      "city": "Karmiel",
+      "tickets": "https://live.tickchak.co.il/shows/event/eZxQWNKYn"
+    },
+    "7B12B81D-1D02-430D-97BF-B61C10E7BBC1": {
+      "title": "Nuria Ensemble",
+      "project": ""
+    },
+    "BB128D28-9E7B-4926-8843-12D8D6159867": {
+      "title": "Tania",
+      "project": "",
+      "venue": "Mamaroko"
+    },
+    "C9761254-F9AB-4627-B6AA-DFEF53A5AA3C": {
+      "title": "Ja'ale",
+      "project": ""
+    },
+    "4B33EC62-B427-4C05-9083-F1476FF785CB": {
+      "title": "Original production",
+      "project": "",
+      "venue": "FeelBeit",
+      "city": "Jerusalem"
+    },
+    "E9537F93-5EF7-43C1-AFEC-EC6013D0A5BC": {
+      "title": "Selichot with Nuria Ensemble",
+      "project": ""
+    },
+    "04BCFF2A-8B12-44DA-A361-C27E958B2880": {
+      "title": "Perla",
+      "project": ""
+    },
+    "8994DF50-B283-4CA3-91A1-09BCB6AFF689": {
+      "title": "Salsa night",
+      "project": "",
+      "venue": "FeelBeit",
+      "city": "Jerusalem"
+    },
+    "8AE928AD-E671-4564-AC2D-314969D74880": {
+      "hide": true
+    },
+    "96588F32-7847-4694-BB81-052373A96C23": {
+      "title": "Itai Armon Ensemble",
+      "project": ""
+    }
+  },
+  "extra": [],
+  "private": [
+    "חתונה",
+    "פרטי",
+    "בר מצו",
+    "בת מצו",
+    "ברית",
+    "קבלת פנים",
+    "אירוע לראני",
+    "מסיבת",
+    "מלון",
+    "כנס",
+    "יום גיבוש"
+  ]
+}

@@ -85,19 +85,20 @@ circ(485, 520, 46, fill=BRONZE); ring(485, 520, 46, 1.2, TAN)
 d.line([X(470), Y(545), X(430), Y(650)], fill=TAN, width=7 * S)
 
 # riq
-QX, QY, QR = 215, 725, 125
-circ(QX, QY, QR, fill=WOOD); ring(QX, QY, QR, 2.4)
-circ(QX, QY, QR - 34, fill=(156, 138, 114)); ring(QX, QY, QR - 34, 1.2, SOFT)
-for k in range(5):  # five slots, each with a pair of brass jingles
+QX, QY, QR = 215, 725, 104
+for k in range(5):  # jingle pairs, larger than the frame so they stick out of it
     a = 2 * math.pi * k / 5 - math.pi / 2 + .3
-    cx, cy = polar(QX, QY, QR - 17, a)
-    tx, ty = -math.sin(a), math.cos(a); nx, ny = math.cos(a), math.sin(a)
-    corners = [(cx + tx * u + nx * v, cy + ty * u + ny * v) for u, v in ((-30, -12), (30, -12), (30, 12), (-30, 12))]
-    d.polygon([(X(px), Y(py)) for px, py in corners], fill=(30, 22, 16))
-    for u in (-12, 12):
-        jx, jy = cx + tx * u, cy + ty * u
-        circ(jx, jy, 13, fill=(204, 168, 78)); ring(jx, jy, 13, 1.2, CREAM); ring(jx, jy, 6, 1, (150, 118, 50))
-    d.line([X(cx - tx * 28), Y(cy - ty * 28), X(cx + tx * 28), Y(cy + ty * 28)], fill=(90, 80, 70), width=S)
+    for off in (-.17, .17):
+        jx, jy = polar(QX, QY, QR + 4, a + off)
+        circ(jx, jy, 21, fill=(186, 150, 74)); ring(jx, jy, 21, 1.4, CREAM)
+        ring(jx, jy, 12, 1, (140, 108, 48)); circ(jx, jy, 3, fill=CREAM)
+circ(QX, QY, QR, fill=mix(WOOD, TAN, .25)); ring(QX, QY, QR, 2.4)
+circ(QX, QY, QR - 14, fill=(168, 148, 116)); ring(QX, QY, QR - 14, 1.6, CREAM)
+rq = random.Random(4)
+for _ in range(260):  # the skin's texture
+    a = rq.uniform(0, 2 * math.pi); rr = (QR - 18) * math.sqrt(rq.random())
+    px, py = polar(QX, QY, rr, a)
+    circ(px, py, rq.uniform(1, 2.5), fill=mix((168, 148, 116), (140, 120, 92), rq.random()))
 
 # bass drum pedal
 pts = [(805, 360), (845, 360), (850, 470), (868, 560), (858, 655), (812, 655), (800, 560), (815, 470)]
@@ -121,25 +122,15 @@ circ(420, 1020, 98, fill=(120, 74, 46)); ring(420, 1020, 98, 2, TAN)
 for k in range(9):
     a = -1.0 + k * .25
     d.line([X(420), Y(1020), *[X(v) if i == 0 else Y(v) for i, v in enumerate(polar(420, 1020, 92, a))]], fill=dim(CREAM, .5), width=S)
-circ(255, 1165, 222, fill=(104, 58, 34)); ring(255, 1165, 222, 1.6, dim(TAN, .8))
-for k in range(36):  # painted dots on the bowl
-    px, py = polar(255, 1165, 204, 2 * math.pi * k / 36)
-    circ(px, py, 5, fill=dim(CREAM, .7))
-ring(255, 1165, 188, 1, dim(CREAM, .45))
-circ(215, 1105, 200, fill=(170, 98, 58)); ring(215, 1105, 200, 2.4)
-for k in range(30):  # painted triangles on the rim
-    a0 = 2 * math.pi * k / 30
-    tri = [polar(215, 1105, 196, a0 - .07), polar(215, 1105, 196, a0 + .07), polar(215, 1105, 176, a0)]
-    d.polygon([(X(px), Y(py)) for px, py in tri], fill=CREAM if k % 2 else (120, 52, 32))
 glow = Image.new('RGB', (W, H), (0, 0, 0)); gm = Image.new('L', (W, H), 0); gd = ImageDraw.Draw(gm)
 for i in range(40):
-    rr = 168 * (1 - i / 40)
+    rr = 200 * (1 - i / 40)
     gd.ellipse([X(215) - R(rr), Y(1105) - R(rr), X(215) + R(rr), Y(1105) + R(rr)], fill=int(90 + 160 * i / 40))
 gm = gm.filter(ImageFilter.GaussianBlur(10 * S))
-circ(215, 1105, 170, fill=(110, 70, 40))
+circ(215, 1105, 210, fill=(96, 62, 34)); ring(215, 1105, 210, 2.4)
 img.paste(Image.new('RGB', (W, H), (238, 178, 92)), (0, 0), gm.point(lambda v: int(v * .9)))
 d = ImageDraw.Draw(img)
-ring(215, 1105, 170, 1.6, CREAM)
+ring(215, 1105, 188, 1.2, CREAM)
 
 def sheen(x, y, r):
     global img, d
@@ -221,9 +212,9 @@ d.line([700 * S, 670 * S, 900 * S, 670 * S], fill=SOFT, width=S)
 sub = font('EBGaramond-Italic[wght].ttf', 50, 400)
 text_c(1900, 'Bringing the oral traditions of rhythm', sub, TAN)
 text_c(1966, 'to the modern drum set', sub, TAN)
-logo = Image.open(LOGO).convert('RGBA'); lh = 175 * S
+logo = Image.open(LOGO).convert('RGBA'); lh = 228 * S
 logo = logo.resize((int(logo.width * lh / logo.height), lh), Image.LANCZOS)
-img.paste(logo, ((W - logo.width) // 2, 2080 * S), logo)
+img.paste(logo, ((W - logo.width) // 2, 2098 * S), logo)
 d.rectangle([48 * S, 48 * S, W - 48 * S, H - 48 * S], outline=dim(TAN, .55), width=S)
 
 img.resize((1600, 2400), Image.LANCZOS).save(OUT)

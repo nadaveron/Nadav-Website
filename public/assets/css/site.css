@@ -452,3 +452,13 @@ main { overflow-x: clip; }
 @media (max-width: 760px) { .about-bio .bio-photo { float: none; width: min(100%, 420px); margin: 0 auto 24px; } }
 .about-bio { padding-top: clamp(24px, 4vw, 48px); }
 .about-bio .wrap { max-width: 1040px; }
+
+/* Study: the book cover heads the page */
+.book-head .copy { gap: 22px; }
+.book-head h1 { font-size: clamp(2.8rem, 2rem + 3.4vw, 4.8rem); }
+.book-head .tagline { font-style: italic; font-size: clamp(1.3rem, 1.1rem + .6vw, 1.7rem); color: var(--cream); max-width: 28ch; }
+.book-head figure.book { justify-self: center; width: min(100%, 400px); }
+.book-head figure.book img { aspect-ratio: 2 / 3; object-fit: cover; box-shadow: 0 30px 60px rgba(0, 0, 0, .7), 0 0 90px rgba(200, 164, 126, .12); }
+.method { display: grid; gap: 14px; max-width: 760px; }
+.method .prose { max-width: none; }
+.split .body .btn { justify-self: start; }

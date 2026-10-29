@@ -337,16 +337,5 @@ window.CONCERTS = [
     "tickets": "",
     "info": "",
     "note": "With Orel Oshrat, Musa Abbasi, Luay Abbasi and guest Neomi Maggeni"
-  },
-  {
-    "date": "2026-07-28",
-    "time": "",
-    "title": "Rotem Cohen",
-    "project": "",
-    "venue": "",
-    "city": "",
-    "tickets": "",
-    "info": "",
-    "note": ""
   }
 ];

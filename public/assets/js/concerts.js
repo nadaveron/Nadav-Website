@@ -77,7 +77,7 @@ window.CONCERTS = [
   {
     "date": "2026-11-05",
     "time": "",
-    "title": "Rotem Cohen",
+    "title": "Shimon Buskila",
     "project": "",
     "venue": "",
     "city": "",
@@ -326,16 +326,5 @@ window.CONCERTS = [
     "tickets": "",
     "info": "",
     "note": ""
-  },
-  {
-    "date": "2026-07-29",
-    "time": "",
-    "title": "Mirror",
-    "project": "Original production",
-    "venue": "FeelBeit terrace, Shift Festival",
-    "city": "Jerusalem",
-    "tickets": "",
-    "info": "",
-    "note": "With Orel Oshrat, Musa Abbasi, Luay Abbasi and guest Neomi Maggeni"
   }
 ];

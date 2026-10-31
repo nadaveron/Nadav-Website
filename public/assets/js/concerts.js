@@ -315,16 +315,5 @@ window.CONCERTS = [
     "tickets": "",
     "info": "",
     "note": ""
-  },
-  {
-    "date": "2026-07-30",
-    "time": "",
-    "title": "Bombaras",
-    "project": "Bombaras",
-    "venue": "Lake Park",
-    "city": "Rishon LeZion",
-    "tickets": "",
-    "info": "",
-    "note": ""
   }
 ];

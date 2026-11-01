@@ -4,7 +4,7 @@
 
 # Old Squarespace addresses, so existing links keep working
 /bio           /about            301
-/discography   /projects#earlier 301
+/discography   /projects#past    301
 /photos        /media#photos     301
 /videos        /media#videos     301
 /teaching      /study            301

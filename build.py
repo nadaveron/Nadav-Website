@@ -65,6 +65,8 @@ def build():
             html = re.sub(r"<!--wa-->.*?<!--/wa-->\n", "", html, flags=re.S)
         # {{icon:spotify}} etc. inside page bodies
         html = re.sub(r"\{\{icon:([a-z]+)\}\}", lambda mm: ICON_SVG[mm.group(1)], html)
+        if page.name == "404.html":  # served at any missing address, so resolve links from the site root
+            html = html.replace("<head>", '<head>\n<base href="/">', 1)
         (ROOT / "public" / page.name).write_text(html, encoding="utf-8")
         print("built", page.name)
 

@@ -6,7 +6,7 @@
   var SITE = {
     email: "nadaveron@gmail.com",
     whatsapp: "https://chat.whatsapp.com/GjGj4pwP7kKLCDzW4AS8f1",
-    FORM_ENDPOINT: ""
+    FORM_ENDPOINT: "https://formspree.io/f/xaeepbvn"
   };
 
   // Third-party players (YouTube, Spotify) are blocked inside sandboxed

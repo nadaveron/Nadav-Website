@@ -20,9 +20,8 @@
 
   <!-- monitor, left -->
   <g id="monitor">
-    <path d="M40 210 L100 210 L91 276 L49 276 Z" fill="#3a332c" stroke="#1d1813"/>
-    <text x="70" y="296" text-anchor="middle" font-size="11">Monitor</text>
-    <text x="70" y="309" text-anchor="middle" font-size="9.5" fill="#6b5a48" font-style="italic">left side</text>
+    <path d="M162 332 L210 332 L203 376 L169 376 Z" fill="#3a332c" stroke="#1d1813"/>
+    <text x="186" y="390" text-anchor="middle" font-size="10.5">Monitor</text>
   </g>
 
   <!-- cymbals (right) -->
@@ -38,13 +37,13 @@
   </g>
   <!-- bells & sounds on a long horizontal boom reaching the small cymbal -->
   <g id="bells">
-    <circle cx="684" cy="262" r="9" fill="#bdb5ad" stroke="#6b6158"/>
-    <line x1="684" y1="262" x2="612" y2="262" stroke="#6b6158" stroke-width="3"/>
+    <line x1="568" y1="306" x2="568" y2="402" stroke="#6b6158" stroke-width="3"/>
+    <circle cx="568" cy="410" r="9" fill="#bdb5ad" stroke="#6b6158"/>
     <g fill="url(#brass)" stroke="#8a6a3c">
-      <circle cx="620" cy="262" r="8"/><circle cx="636" cy="254" r="10"/><circle cx="652" cy="266" r="9"/><circle cx="667" cy="256" r="7"/>
+      <circle cx="568" cy="318" r="8"/><circle cx="576" cy="336" r="10"/><circle cx="562" cy="356" r="9"/><circle cx="574" cy="376" r="7"/><circle cx="564" cy="392" r="7"/>
     </g>
-    <text x="650" y="236" text-anchor="middle" font-size="10.5">Bells &amp; sounds</text>
-    <text x="650" y="292" text-anchor="middle" font-size="9.5" fill="#6b5a48" font-style="italic">long boom arm</text>
+    <text x="592" y="352" font-size="10.5">Bells &amp; sounds</text>
+    <text x="592" y="366" font-size="9.5" fill="#6b5a48" font-style="italic">long boom arm</text>
   </g>
 
   <!-- bass drum (bombo), front head toward the audience -->
@@ -122,7 +121,8 @@
     <circle cx="489" cy="312" r="11" fill="none" stroke="#9a4a2f" stroke-dasharray="3 2" stroke-width="1.6"/><text x="489" y="316" fill="#9a4a2f">5</text>
     <circle cx="600" cy="104" r="11" fill="#9a4a2f"/><text x="600" y="108" fill="#fff">6</text>
     <line x1="591" y1="111" x2="566" y2="126" stroke="#9a4a2f" stroke-dasharray="3 3"/>
-    <circle cx="652" cy="322" r="11" fill="#9a4a2f"/><text x="652" y="326" fill="#fff">7</text>
+    <circle cx="606" cy="318" r="11" fill="#9a4a2f"/><text x="606" y="322" fill="#fff">7</text>
+    <line x1="597" y1="324" x2="582" y2="334" stroke="#9a4a2f" stroke-dasharray="3 3"/>
     <circle cx="232" cy="190" r="11" fill="#9a4a2f"/><text x="232" y="194" fill="#fff">8</text>
   </g>
 

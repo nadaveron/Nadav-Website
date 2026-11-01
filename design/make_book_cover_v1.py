@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 S = 2                      # supersample
 W, H = 1600 * S, 2400 * S
-F = 'fonts/'  # Cormorant Garamond and EB Garamond variable TTFs from Google Fonts
+F = 'design/fonts/'  # Cormorant Garamond and EB Garamond variable TTFs from Google Fonts
 LOGO = 'public/assets/img/logo.webp'
 TAN = (200, 164, 126); SOFT = (168, 140, 108); CREAM = (234, 220, 203); BG = (8, 7, 6)
 

@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 random.seed(7)
 S = 2
 W, H = 1600 * S, 2400 * S
-F = 'fonts/'  # Cormorant Garamond and EB Garamond variable TTFs from Google Fonts
+F = 'design/fonts/'  # Cormorant Garamond and EB Garamond variable TTFs from Google Fonts
 LOGO = 'public/assets/img/logo.webp'
 OUT = 'design/book-cover-middle-eastern-drum-set.png'
 TAN = (200, 164, 126); SOFT = (168, 140, 108); CREAM = (234, 220, 203); BG = (44, 40, 36)   # warm charcoal, lighter than the site's black

@@ -5,6 +5,7 @@ Each page starts with a one-line JSON comment holding its title, description,
 nav key and canonical path. Run `python3 build.py` after editing anything in
 src/. Concert dates live in public/assets/js/concerts.js and need no rebuild.
 """
+import hashlib
 import json, re, pathlib
 
 ROOT = pathlib.Path(__file__).parent
@@ -46,6 +47,16 @@ def nav_html(active):
     current = ' aria-current="page"'
     return "".join(f'<a href="{href}"{current if key == active else ""}>{label}</a>' for key, href, label in NAV)
 
+# Files browsers keep for hours: their links get ?v=<content hash>, so a changed file is fetched fresh.
+VERSIONED = ["assets/css/site.css", "assets/js/site.js", "assets/js/concerts.js", "/favicon.ico",
+             "assets/img/favicon-96.png", "assets/img/icon-192.png", "assets/img/apple-touch-icon.png"]
+
+def fingerprint(html):
+    for ref in VERSIONED:
+        digest = hashlib.md5((ROOT / "public" / ref.lstrip("/")).read_bytes()).hexdigest()[:8]
+        html = html.replace(f'"{ref}"', f'"{ref}?v={digest}"')
+    return html
+
 def build():
     layout = (ROOT / "src/layout.html").read_text(encoding="utf-8")
     for page in sorted((ROOT / "src/pages").glob("*.html")):
@@ -65,6 +76,7 @@ def build():
             html = re.sub(r"<!--wa-->.*?<!--/wa-->\n", "", html, flags=re.S)
         # {{icon:spotify}} etc. inside page bodies
         html = re.sub(r"\{\{icon:([a-z]+)\}\}", lambda mm: ICON_SVG[mm.group(1)], html)
+        html = fingerprint(html)
         if page.name == "404.html":  # served at any missing address, so resolve links from the site root
             html = html.replace("<head>", '<head>\n<base href="/">', 1)
         (ROOT / "public" / page.name).write_text(html, encoding="utf-8")

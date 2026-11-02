@@ -477,3 +477,7 @@ main { overflow-x: clip; }
 .not-found .wrap { display: grid; justify-items: center; text-align: center; gap: 18px; padding-block: clamp(40px, 8vw, 120px); }
 .not-found .ornament { width: 64px; }
 .not-found .actions { justify-content: center; }
+
+/* Projects: title and jump links centred over the rule */
+.page-title.compact .copy h1 { text-align: center; }
+.page-title.compact .pill-list { justify-content: center; }

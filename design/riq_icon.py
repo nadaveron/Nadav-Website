@@ -47,7 +47,7 @@ def logo_head(d):
 
 def riq(size, n=5):
     art = Image.new('RGBA', (S, S), (0, 0, 0, 0))
-    FR, JC, JR = 384, 398, 88                      # frame radius, jingle centre radius, jingle radius
+    FR, JC, JR = 384, 320, 130                     # frame radius, jingle centre radius, jingle radius: big jingles, tucked under the rim
     angles = [math.radians(-64 + k * 72) for k in range(n)]
     for k, a in enumerate(angles):                 # jingles behind the rim, sticking out past it
         jg = jingle(JR, k)

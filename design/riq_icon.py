@@ -35,6 +35,7 @@ def jingle(r, seed, edge_w=None, bright=False):
     return j
 
 LOGO = 'public/assets/img/logo.webp'
+TAB_GEOMETRY = (404, 414, 104)                     # frame radius, jingle centre radius, jingle radius at tab sizes
 
 def logo_head(d, lift=1.0):
     """The drum head from the logo, cut as a disc: keeps the site's parchment texture and colour."""
@@ -54,8 +55,8 @@ def riq(size, n=5):
     px = S / size                                  # drawing units per screen pixel: outlines stay about one pixel wide
     k = (1.3, 0.9, 1.1) if size <= 16 else (1.9, 1.3, 1.4) if small else (0.9, 0.8, 0.75)
     edge_w = int(max(8, k[0] * px)); ring_w = int(max(10, k[1] * px)); jingle_w = int(max(4, k[2] * px))
-    if small:                                      # tab sizes: the drum fills the square, jingles run off its edges
-        FR, JC, JR = 468, 420, 124
+    if small:                                      # tab sizes: a big drum, jingles standing well out from the rim
+        FR, JC, JR = TAB_GEOMETRY
     else:
         FR, JC, JR = 384, 320, 130                 # frame radius, jingle centre radius, jingle radius: big jingles, tucked under the rim
     angles = [math.radians(-64 + k * 72) for k in range(n)]

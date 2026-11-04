@@ -59,7 +59,7 @@ def riq(size, n=5):
         FR, JC, JR = TAB_GEOMETRY
     else:
         FR, JC, JR = 384, 320, 130                 # frame radius, jingle centre radius, jingle radius: big jingles, tucked under the rim
-    angles = [math.radians(-64 + k * 72) for k in range(n)]
+    angles = [math.radians(-90 + k * 72) for k in range(n)]      # one jingle exactly at 12 o'clock
     for k, a in enumerate(angles):                 # jingles behind the rim, sticking out past it
         jg = jingle(JR, k, jingle_w, bright=small)
         art.alpha_composite(jg, (int(C + JC * math.cos(a) - JR), int(C + JC * math.sin(a) - JR)))

@@ -75,6 +75,17 @@ window.CONCERTS = [
     "note": ""
   },
   {
+    "date": "2026-11-08",
+    "time": "",
+    "title": "Rotem Cohen",
+    "project": "",
+    "venue": "",
+    "city": "Eilat",
+    "tickets": "",
+    "info": "",
+    "note": ""
+  },
+  {
     "date": "2026-11-05",
     "time": "",
     "title": "Shimon Buskila",

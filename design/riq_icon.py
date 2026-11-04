@@ -50,11 +50,14 @@ def logo_head(d, lift=1.0):
 
 def riq(size, n=5):
     art = Image.new('RGBA', (S, S), (0, 0, 0, 0))
+    small = size <= 48                             # tab sizes get bolder lines, brighter tones and a fuller frame
     px = S / size                                  # drawing units per screen pixel: outlines stay about one pixel wide
-    small = size <= 48                             # tab sizes get bolder lines and brighter tones
     k = (1.3, 0.9, 1.1) if size <= 16 else (1.9, 1.3, 1.4) if small else (0.9, 0.8, 0.75)
     edge_w = int(max(8, k[0] * px)); ring_w = int(max(10, k[1] * px)); jingle_w = int(max(4, k[2] * px))
-    FR, JC, JR = 384, 320, 130                     # frame radius, jingle centre radius, jingle radius: big jingles, tucked under the rim
+    if small:                                      # tab sizes: the drum fills the square, jingles run off its edges
+        FR, JC, JR = 468, 420, 124
+    else:
+        FR, JC, JR = 384, 320, 130                 # frame radius, jingle centre radius, jingle radius: big jingles, tucked under the rim
     angles = [math.radians(-64 + k * 72) for k in range(n)]
     for k, a in enumerate(angles):                 # jingles behind the rim, sticking out past it
         jg = jingle(JR, k, jingle_w, bright=small)

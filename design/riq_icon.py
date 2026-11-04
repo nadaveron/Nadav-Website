@@ -53,7 +53,7 @@ def riq(size, n=5):
     art = Image.new('RGBA', (S, S), (0, 0, 0, 0))
     small = size <= 48                             # tab sizes get bolder lines, brighter tones and a fuller frame
     px = S / size                                  # drawing units per screen pixel: outlines stay about one pixel wide
-    k = (1.3, 0.9, 1.1) if size <= 16 else (1.9, 1.3, 1.4) if small else (0.9, 0.8, 0.75)
+    k = (0.9, 0.55, 1.0) if size <= 16 else (1.0, 0.6, 1.1) if small else (0.9, 0.8, 0.75)   # edge, inner ring, jingle edge, in screen pixels
     edge_w = int(max(8, k[0] * px)); ring_w = int(max(10, k[1] * px)); jingle_w = int(max(4, k[2] * px))
     if small:                                      # tab sizes: a big drum, jingles standing well out from the rim
         FR, JC, JR = TAB_GEOMETRY
@@ -67,7 +67,7 @@ def riq(size, n=5):
     art.alpha_composite(rim, (int(C - FR), int(C - FR)))
     d = ImageDraw.Draw(art)
     d.ellipse([C - FR, C - FR, C + FR, C + FR], outline=(22, 15, 8, 255), width=edge_w)      # fine dark edge, like the logo's black gaps
-    rim_w = 26                                                                            # visible bronze band of the rim
+    rim_w = 14 if small else 26                                                           # visible bronze band of the rim
     inner = FR - edge_w - rim_w
     d.ellipse([C - inner, C - inner, C + inner, C + inner], fill=(30, 22, 14, 255))         # fine dark ring between rim and head
     HR = inner - ring_w

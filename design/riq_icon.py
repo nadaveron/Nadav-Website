@@ -18,7 +18,7 @@ def radial(size, inner, outer, centre=(0.5, 0.5), radius=0.5):
     im.putalpha(mask)
     return im
 
-def jingle(r, seed):
+def jingle(r, seed, edge_w=None):
     """A hammered brass jingle: warm gradient, dimples, a slightly darker edge."""
     d = 2 * r
     j = radial(d, (246, 226, 186), (150, 112, 66), centre=(0.38, 0.32))
@@ -28,7 +28,7 @@ def jingle(r, seed):
         x, y = r + rr * math.cos(a), r + rr * math.sin(a); s = rnd.uniform(r * .06, r * .11)
         dr.arc([x - s, y - s, x + s, y + s], 200, 340, fill=(248, 232, 200, 110), width=max(2, int(s * .35)))
         dr.arc([x - s, y - s, x + s, y + s], 20, 160, fill=(110, 80, 46, 100), width=max(2, int(s * .35)))
-    edge = Image.new('L', (d, d), 0); ImageDraw.Draw(edge).ellipse([0, 0, d - 1, d - 1], outline=255, width=max(3, r // 7))
+    edge = Image.new('L', (d, d), 0); ImageDraw.Draw(edge).ellipse([0, 0, d - 1, d - 1], outline=255, width=edge_w or max(3, r // 7))
     j.paste((58, 40, 22, 255), (0, 0), edge)
     mask = Image.new('L', (d, d), 0); ImageDraw.Draw(mask).ellipse([0, 0, d - 1, d - 1], fill=255)
     j.putalpha(ImageChops.multiply(j.split()[3], mask))
@@ -47,17 +47,21 @@ def logo_head(d):
 
 def riq(size, n=5):
     art = Image.new('RGBA', (S, S), (0, 0, 0, 0))
+    px = S / size                                  # drawing units per screen pixel: outlines stay about one pixel wide
+    edge_w = int(max(8, 0.9 * px)); ring_w = int(max(10, 0.8 * px)); jingle_w = int(max(4, 0.75 * px))
     FR, JC, JR = 384, 320, 130                     # frame radius, jingle centre radius, jingle radius: big jingles, tucked under the rim
     angles = [math.radians(-64 + k * 72) for k in range(n)]
     for k, a in enumerate(angles):                 # jingles behind the rim, sticking out past it
-        jg = jingle(JR, k)
+        jg = jingle(JR, k, jingle_w)
         art.alpha_composite(jg, (int(C + JC * math.cos(a) - JR), int(C + JC * math.sin(a) - JR)))
     rim = radial(2 * FR, (230, 204, 160), (132, 98, 58), centre=(0.3, 0.25))           # warm bronze rim
     art.alpha_composite(rim, (int(C - FR), int(C - FR)))
     d = ImageDraw.Draw(art)
-    d.ellipse([C - FR, C - FR, C + FR, C + FR], outline=(40, 28, 16, 255), width=14)          # dark edge, like the logo's black gaps
-    d.ellipse([C - FR + 30, C - FR + 30, C + FR - 30, C + FR - 30], fill=(30, 22, 14, 255))   # dark ring between rim and head
-    HR = FR - 62
+    d.ellipse([C - FR, C - FR, C + FR, C + FR], outline=(40, 28, 16, 255), width=edge_w)      # fine dark edge, like the logo's black gaps
+    rim_w = 26                                                                            # visible bronze band of the rim
+    inner = FR - edge_w - rim_w
+    d.ellipse([C - inner, C - inner, C + inner, C + inner], fill=(30, 22, 14, 255))         # fine dark ring between rim and head
+    HR = inner - ring_w
     head = logo_head(2 * HR)                                                              # the logo's textured skin
     art.alpha_composite(head, (int(C - HR), int(C - HR)))
     # soft shadow underneath, so the pale head still holds on white

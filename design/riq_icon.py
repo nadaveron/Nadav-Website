@@ -1,41 +1,78 @@
-"""A simplified riq (frame drum with jingles) drawn for tiny sizes: bold shapes, outlined so it reads on light and dark tab bars."""
-import math, sys
-from PIL import Image, ImageDraw
+"""A riq (frame drum with jingles) drawn for small icons, after a real instrument and in the logo's palette:
+the logo's own textured drum head, a thin bronze rim, five large hammered jingles in tan bronze, soft shadow."""
+import math, random, sys
+from PIL import Image, ImageDraw, ImageFilter, ImageChops
 
-PALETTES = {
-    # frame, head, jingle, outline
-    'two-tone': ((86, 58, 34), (214, 186, 140), (232, 192, 92), (28, 20, 12)),
-    'black':    ((17, 17, 17), (17, 17, 17), (17, 17, 17), (17, 17, 17)),
-    'gold-outlined': ((200, 164, 126), (236, 222, 200), (226, 184, 80), (40, 28, 16)),
-}
+S = 1024
+C = S / 2
 
-def riq(size, palette='two-tone', n=5):
-    frame, head, jingle, ink = PALETTES[palette]
-    S = 1024; c = S / 2
-    im = Image.new('RGBA', (S, S), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-    R, J, JR = 330, 360, 108            # frame radius, jingle centre radius, jingle radius
-    OW = 34                             # outline width
-    def disc(x, y, r, fill, w=OW):
-        d.ellipse([x - r, y - r, x + r, y + r], fill=ink); d.ellipse([x - r + w, y - r + w, x + r - w, y + r - w], fill=fill)
-    for k in range(n):                  # jingles sit behind the frame and stick out past it
-        a = -math.pi / 2 + 2 * math.pi * k / n
-        disc(c + J * math.cos(a), c + J * math.sin(a), JR, jingle)
-        d.ellipse([c + J * math.cos(a) - 22, c + J * math.sin(a) - 22, c + J * math.cos(a) + 22, c + J * math.sin(a) + 22], fill=ink)
-    disc(c, c, R, frame)                # wooden frame
-    disc(c, c, R - 78, head, w=28)      # skin head with its own rim line
-    return im.resize((size, size), Image.LANCZOS)
+def radial(size, inner, outer, centre=(0.5, 0.5), radius=0.5):
+    """An RGBA disc filled with a radial gradient from inner to outer colour."""
+    im = Image.new('RGBA', (size, size), (0, 0, 0, 0)); px = im.load()
+    cx, cy = centre[0] * size, centre[1] * size; R = radius * size * 1.25
+    for y in range(size):
+        for x in range(size):
+            t = min(1.0, math.hypot(x - cx, y - cy) / R)
+            px[x, y] = tuple(int(inner[i] + (outer[i] - inner[i]) * t) for i in range(3)) + (255,)
+    mask = Image.new('L', (size, size), 0); ImageDraw.Draw(mask).ellipse([0, 0, size - 1, size - 1], fill=255)
+    im.putalpha(mask)
+    return im
+
+def jingle(r, seed):
+    """A hammered brass jingle: warm gradient, dimples, a slightly darker edge."""
+    d = 2 * r
+    j = radial(d, (246, 226, 186), (150, 112, 66), centre=(0.38, 0.32))
+    dr = ImageDraw.Draw(j); rnd = random.Random(seed)
+    for _ in range(int(r * 0.45)):                   # hammer dimples: light and dark crescents
+        a = rnd.uniform(0, 2 * math.pi); rr = r * math.sqrt(rnd.random()) * 0.9
+        x, y = r + rr * math.cos(a), r + rr * math.sin(a); s = rnd.uniform(r * .06, r * .11)
+        dr.arc([x - s, y - s, x + s, y + s], 200, 340, fill=(248, 232, 200, 110), width=max(2, int(s * .35)))
+        dr.arc([x - s, y - s, x + s, y + s], 20, 160, fill=(110, 80, 46, 100), width=max(2, int(s * .35)))
+    edge = Image.new('L', (d, d), 0); ImageDraw.Draw(edge).ellipse([0, 0, d - 1, d - 1], outline=255, width=max(3, r // 7))
+    j.paste((58, 40, 22, 255), (0, 0), edge)
+    mask = Image.new('L', (d, d), 0); ImageDraw.Draw(mask).ellipse([0, 0, d - 1, d - 1], fill=255)
+    j.putalpha(ImageChops.multiply(j.split()[3], mask))
+    return j
+
+LOGO = 'public/assets/img/logo.webp'
+
+def logo_head(d):
+    """The drum head from the logo, cut as a disc: keeps the site's parchment texture and colour."""
+    logo = Image.open(LOGO).convert('RGBA')
+    head = logo.crop((215 - 74, 299 - 74, 215 + 74, 299 + 74)).resize((d, d), Image.LANCZOS)
+    mask = Image.new('L', (d, d), 0); ImageDraw.Draw(mask).ellipse([0, 0, d - 1, d - 1], fill=255)
+    base = Image.new('RGBA', (d, d), (200, 168, 124, 255)); base.alpha_composite(head)
+    base.putalpha(mask)
+    return base
+
+def riq(size, n=5):
+    art = Image.new('RGBA', (S, S), (0, 0, 0, 0))
+    FR, JC, JR = 384, 398, 88                      # frame radius, jingle centre radius, jingle radius
+    angles = [math.radians(-64 + k * 72) for k in range(n)]
+    for k, a in enumerate(angles):                 # jingles behind the rim, sticking out past it
+        jg = jingle(JR, k)
+        art.alpha_composite(jg, (int(C + JC * math.cos(a) - JR), int(C + JC * math.sin(a) - JR)))
+    rim = radial(2 * FR, (230, 204, 160), (132, 98, 58), centre=(0.3, 0.25))           # warm bronze rim
+    art.alpha_composite(rim, (int(C - FR), int(C - FR)))
+    d = ImageDraw.Draw(art)
+    d.ellipse([C - FR, C - FR, C + FR, C + FR], outline=(40, 28, 16, 255), width=14)          # dark edge, like the logo's black gaps
+    d.ellipse([C - FR + 30, C - FR + 30, C + FR - 30, C + FR - 30], fill=(30, 22, 14, 255))   # dark ring between rim and head
+    HR = FR - 62
+    head = logo_head(2 * HR)                                                              # the logo's textured skin
+    art.alpha_composite(head, (int(C - HR), int(C - HR)))
+    # soft shadow underneath, so the pale head still holds on white
+    sh = art.split()[3].point(lambda v: int(v * .55)).filter(ImageFilter.GaussianBlur(26))
+    shadow = Image.new('RGBA', (S, S), (40, 30, 20, 0)); shadow.putalpha(ImageChops.offset(sh, 0, 18))
+    out = Image.alpha_composite(shadow, art)
+    return out.resize((size, size), Image.LANCZOS)
 
 if __name__ == '__main__':
-    out = sys.argv[1]
-    bars = [((255, 255, 255), 'white'), ((222, 225, 230), 'light tab'), ((53, 54, 58), 'dark tab'), ((0, 0, 0), 'black')]
-    rows = list(PALETTES)
-    sheet = Image.new('RGB', (len(bars) * 170, len(rows) * 70), (255, 255, 255))
-    for ri, pal in enumerate(rows):
-        for bi, (bg, _) in enumerate(bars):
-            cell = Image.new('RGB', (170, 70), bg)
-            x = 10
-            for s in (16, 32, 48):
-                ic = riq(s, pal); cell.paste(ic, (x, 35 - s // 2), ic); x += s + 12
-            sheet.paste(cell, (bi * 170, ri * 70))
-    sheet.resize((sheet.width * 2, sheet.height * 2), Image.NEAREST).save(out)
-    print('rows:', rows)
+    bars = [(255, 255, 255), (222, 225, 230), (53, 54, 58), (0, 0, 0)]
+    sheet = Image.new('RGB', (len(bars) * 170, 70), (255, 255, 255))
+    for bi, bg in enumerate(bars):
+        cell = Image.new('RGB', (170, 70), bg); x = 10
+        for s in (16, 32, 48):
+            ic = riq(s); cell.paste(ic, (x, 35 - s // 2), ic); x += s + 12
+        sheet.paste(cell, (bi * 170, 0))
+    sheet.resize((sheet.width * 2, sheet.height * 2), Image.NEAREST).save(sys.argv[1])
+    riq(512).save(sys.argv[1].replace('.png', '-512.png'))

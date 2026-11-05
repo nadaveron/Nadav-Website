@@ -42,17 +42,6 @@ window.CONCERTS = [
     "note": ""
   },
   {
-    "date": "2026-12-17",
-    "time": "",
-    "title": "Rotem Cohen",
-    "project": "",
-    "venue": "",
-    "city": "Ramat HaHayal, Tel Aviv",
-    "tickets": "",
-    "info": "",
-    "note": ""
-  },
-  {
     "date": "2026-11-26",
     "time": "",
     "title": "Rotem Cohen",

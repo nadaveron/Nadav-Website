@@ -11,6 +11,11 @@ site's English concert list, using the rules in gigs.json:
   places    Hebrew patterns -> English venue and/or city
   events    per-event overrides by calendar UID ("hide": true, or any field)
   extra     shows to list that are not in the calendar
+  phrases   Hebrew and Spanish for recurring words ("Private event", "Album launch")
+
+Any rule or override can carry "he" and "es" objects with translated fields, e.g.
+{"match": "פילבית", "venue": "FeelBeit", "city": "Jerusalem", "he": {"venue": "פילבית", "city": "ירושלים"}}.
+They become title_he, venue_es, ... in concerts.js; the site shows them on the Hebrew and Spanish pages.
 
 An event is listed when it matches an artist (or has an override) and no
 exclude word. Anything else that looks like it could be a gig is printed under
@@ -57,7 +62,7 @@ def parse_ics(text):
         elif cur is not None and ":" in line:
             key, value = line.split(":", 1)
             name, *params = key.split(";")
-            value = value.replace("\\n", "\n").replace("\\,", ",").replace("\;", ";")
+            value = value.replace("\\n", "\n").replace("\\,", ",").replace("\\;", ";")
             if name not in cur:
                 cur[name] = value
                 cur[name + "@"] = params
@@ -81,10 +86,31 @@ def local_date(event):
 
 
 def first(rules, text, field):
+    return pick(rules, text, field)[0]
+
+
+def pick(rules, text, field):
+    """The first rule that sets `field` and matches `text`: (English value, rule)."""
     for rule in rules:
         if field in rule and re.search(rule["match"], text):
-            return rule[field]
-    return ""
+            return rule[field], rule
+    return "", {}
+
+
+LANGS = ("he", "es")
+FIELDS = ("title", "project", "venue", "city", "note")
+
+
+def translate(gig, sources, phrases):
+    """Adds title_he, venue_es, ... from the rules that produced each field, then from the phrase list.
+    The site falls back to English where a translation is missing."""
+    for lang in LANGS:
+        for field in FIELDS:
+            value = next((src.get(lang, {}).get(field) for src in sources.get(field, []) if src.get(lang, {}).get(field)), None)
+            if value is None and gig[field] in phrases:
+                value = phrases[gig[field]].get(lang)
+            if value:
+                gig[f"{field}_{lang}"] = value
 
 
 def main():
@@ -112,15 +138,24 @@ def main():
             if not exclude.search(summary):
                 undecided.append(f"{day}  {summary}  [{ev.get('UID', '')}]")
             continue
+        title_rule = pick(cfg["artists"], summary, "title")[1]
+        venue, venue_rule = pick(cfg["places"], text, "venue")
+        city, city_rule = pick(cfg["places"], text, "city")
         gig = {
             "date": day.isoformat(), "time": "",
             "title": title, "project": first(cfg["artists"], summary, "project"),
-            "venue": first(cfg["places"], text, "venue"), "city": first(cfg["places"], text, "city"),
+            "venue": venue, "city": city,
             "tickets": "", "info": "", "note": "",
         }
+        sources = {"title": [override, title_rule], "project": [override, title_rule],
+                   "venue": [override, venue_rule], "city": [override, city_rule], "note": [override]}
         if is_private:  # act and city only
             gig.update(title=title or "Private event", venue="", note="Private event" if title else "")
+            sources["venue"] = [override]
+            if not title:
+                sources["title"] = [override]
         gig.update({k: v for k, v in override.items() if k in gig})
+        translate(gig, sources, cfg.get("phrases", {}))
         key = (gig["date"], gig["title"], gig["venue"], gig["city"])
         if key in seen:  # the same show entered twice
             continue

@@ -1,0 +1,35 @@
+<!-- {"title": "יצירת קשר · נדב פרידמן", "description": "להזמנת נגן כלי ההקשה נדב פרידמן להופעות, להקלטות, להפקות, לשיעורים ולכיתות אמן.", "nav": "contact", "path": "/contact"} -->
+<section class="section contact-page" aria-labelledby="contact-title">
+  <div class="wrap contact-layout">
+    <h1 id="contact-title" class="sr-title">יצירת קשר</h1>
+    <figure class="whole contact-photo">
+      <img src="assets/photos/contact-cymbal.jpg" alt="תקריב של מקל תיפוף המונח על מצילה באור עמום" width="1500" height="2000" fetchpriority="high">
+    </figure>
+    <form class="contact" id="contact-form" novalidate>
+      <div class="row2">
+        <div class="field"><label for="f-name">שם</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">אימייל</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field">
+        <label for="f-topic">מה הנושא?</label>
+        <select id="f-topic" name="topic">
+          <option data-key="session">כלי הקשה להופעה או להקלטה</option>
+          <option data-key="bombaras">הזמנת בומבראס</option>
+          <option data-key="armon">הזמנת האנסמבל של איתי ארמון</option>
+          <option data-key="production">הבאת "מראה" או "אלמה דה באטה – נשמת התוף"</option>
+          <option data-key="new">יצירת הפקה חדשה</option>
+          <option data-key="lessons">שיעורים</option>
+          <option data-key="workshop">כיתת אמן או סדנה</option>
+          <option data-key="press">עיתונות</option>
+          <option data-key="other">משהו אחר</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-message">הודעה</label><textarea id="f-message" name="message" required placeholder="תאריך, מקום ומה שיש לכם בראש"></textarea></div>
+      <div class="actions"><button class="btn" type="submit">שלחו הודעה</button></div>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+  <div class="wrap">
+    <div class="icons contact-icons">{{icons}}</div>
+  </div>
+</section>

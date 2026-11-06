@@ -17,7 +17,11 @@ window.CONCERTS = [
     "city": "Ashkelon",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "בומבראס",
+    "project_he": "בומבראס",
+    "venue_he": "דה הום",
+    "city_he": "אשקלון"
   },
   {
     "date": "2027-01-21",
@@ -28,7 +32,9 @@ window.CONCERTS = [
     "city": "Eilat",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "רותם כהן",
+    "city_he": "אילת"
   },
   {
     "date": "2026-12-24",
@@ -39,7 +45,40 @@ window.CONCERTS = [
     "city": "Karmiel",
     "tickets": "https://live.tickchak.co.il/shows/event/eZxQWNKYn",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "רותם כהן",
+    "venue_he": "היכל התרבות כרמיאל",
+    "city_he": "כרמיאל",
+    "venue_es": "Centro Cultural de Karmiel"
+  },
+  {
+    "date": "2026-12-17",
+    "time": "",
+    "title": "Yaara Be'eri",
+    "project": "",
+    "venue": "",
+    "city": "Mitzpe Ramon",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "יערה בארי",
+    "city_he": "מצפה רמון"
+  },
+  {
+    "date": "2026-12-10",
+    "time": "",
+    "title": "Andalusian Haflah",
+    "project": "",
+    "venue": "FeelBeit",
+    "city": "Jerusalem",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "חפלה אנדלוסית",
+    "venue_he": "פילבית",
+    "city_he": "ירושלים",
+    "title_es": "Haflah andalusí",
+    "city_es": "Jerusalén"
   },
   {
     "date": "2026-11-26",
@@ -50,7 +89,10 @@ window.CONCERTS = [
     "city": "Haifa",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "רותם כהן",
+    "venue_he": "זאפה",
+    "city_he": "חיפה"
   },
   {
     "date": "2026-11-13",
@@ -61,7 +103,8 @@ window.CONCERTS = [
     "city": "",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "רותם כהן"
   },
   {
     "date": "2026-11-08",
@@ -72,7 +115,9 @@ window.CONCERTS = [
     "city": "Eilat",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "רותם כהן",
+    "city_he": "אילת"
   },
   {
     "date": "2026-11-05",
@@ -83,7 +128,8 @@ window.CONCERTS = [
     "city": "",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "שמעון בוסקילה"
   },
   {
     "date": "2026-10-30",
@@ -94,7 +140,11 @@ window.CONCERTS = [
     "city": "Tel Aviv",
     "tickets": "",
     "info": "",
-    "note": "Private event"
+    "note": "Private event",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "תל אביב",
+    "note_he": "אירוע פרטי",
+    "note_es": "Evento privado"
   },
   {
     "date": "2026-10-29",
@@ -105,7 +155,12 @@ window.CONCERTS = [
     "city": "Jerusalem",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "ערב סלסה",
+    "venue_he": "פילבית",
+    "city_he": "ירושלים",
+    "title_es": "Noche de salsa",
+    "city_es": "Jerusalén"
   },
   {
     "date": "2026-10-26",
@@ -116,7 +171,12 @@ window.CONCERTS = [
     "city": "Jerusalem",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "אנסמבל גליל עם ג׳ושוע אהרון",
+    "venue_he": "פוויליון, מרכז כלל",
+    "city_he": "ירושלים",
+    "title_es": "Galilee Ensemble con Joshua Aaron",
+    "city_es": "Jerusalén"
   },
   {
     "date": "2026-10-22",
@@ -127,7 +187,9 @@ window.CONCERTS = [
     "city": "Ruhama",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "רוחמה"
   },
   {
     "date": "2026-10-14",
@@ -138,7 +200,11 @@ window.CONCERTS = [
     "city": "Yavne",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "רותם כהן",
+    "venue_he": "היכל התרבות יבנה",
+    "city_he": "יבנה",
+    "venue_es": "Centro Cultural de Yavne"
   },
   {
     "date": "2026-10-13",
@@ -149,7 +215,9 @@ window.CONCERTS = [
     "city": "Eilat",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "שמעון בוסקילה",
+    "city_he": "אילת"
   },
   {
     "date": "2026-10-08",
@@ -160,7 +228,9 @@ window.CONCERTS = [
     "city": "Rosh Pinna",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "ראש פינה"
   },
   {
     "date": "2026-10-01",
@@ -171,7 +241,11 @@ window.CONCERTS = [
     "city": "Yavne'el",
     "tickets": "",
     "info": "",
-    "note": "Private event"
+    "note": "Private event",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "יבנאל",
+    "note_he": "אירוע פרטי",
+    "note_es": "Evento privado"
   },
   {
     "date": "2026-09-30",
@@ -182,7 +256,9 @@ window.CONCERTS = [
     "city": "Lehavot HaBashan",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "פרלה",
+    "city_he": "להבות הבשן"
   },
   {
     "date": "2026-09-29",
@@ -193,7 +269,9 @@ window.CONCERTS = [
     "city": "Mamshit",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "ממשית"
   },
   {
     "date": "2026-09-23",
@@ -204,7 +282,9 @@ window.CONCERTS = [
     "city": "Tel Aviv",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "תל אביב"
   },
   {
     "date": "2026-09-16",
@@ -215,7 +295,11 @@ window.CONCERTS = [
     "city": "",
     "tickets": "",
     "info": "",
-    "note": "Album launch"
+    "note": "Album launch",
+    "title_he": "דוד לביא ותמר פילוסוף",
+    "note_he": "השקת אלבום",
+    "title_es": "David Lavi y Tamar Philosof",
+    "note_es": "Lanzamiento del álbum"
   },
   {
     "date": "2026-09-15",
@@ -226,7 +310,9 @@ window.CONCERTS = [
     "city": "",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "בומבראס",
+    "project_he": "בומבראס"
   },
   {
     "date": "2026-09-09",
@@ -237,7 +323,9 @@ window.CONCERTS = [
     "city": "",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "אירוע פרטי",
+    "title_es": "Evento privado"
   },
   {
     "date": "2026-09-04",
@@ -248,7 +336,9 @@ window.CONCERTS = [
     "city": "",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "סליחות עם אנסמבל נוריא",
+    "title_es": "Selijot con Nuria Ensemble"
   },
   {
     "date": "2026-09-03",
@@ -259,7 +349,9 @@ window.CONCERTS = [
     "city": "Netanya",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "נתניה"
   },
   {
     "date": "2026-08-29",
@@ -270,7 +362,9 @@ window.CONCERTS = [
     "city": "Gan Shomron",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון",
+    "city_he": "גן שומרון"
   },
   {
     "date": "2026-08-28",
@@ -281,7 +375,10 @@ window.CONCERTS = [
     "city": "",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "בומבראס",
+    "project_he": "בומבראס",
+    "venue_he": "המגדלור"
   },
   {
     "date": "2026-08-28",
@@ -292,7 +389,10 @@ window.CONCERTS = [
     "city": "Kibbutz Gat",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "בומבראס",
+    "project_he": "בומבראס",
+    "city_he": "קיבוץ גת"
   },
   {
     "date": "2026-08-27",
@@ -303,7 +403,9 @@ window.CONCERTS = [
     "city": "Yokneam",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "רותם כהן",
+    "city_he": "יקנעם"
   },
   {
     "date": "2026-08-26",
@@ -314,6 +416,8 @@ window.CONCERTS = [
     "city": "Nof HaGalil",
     "tickets": "",
     "info": "",
-    "note": ""
+    "note": "",
+    "title_he": "שמעון בוסקילה",
+    "city_he": "נוף הגליל"
   }
 ];

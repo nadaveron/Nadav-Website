@@ -13,8 +13,35 @@
   // previews, so there the cards stay as plain links.
   var EMBEDS = !/(^|\.)claude\.ai$|claudeusercontent|anthropic/.test(location.hostname);
 
-  var MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-  var WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  // Interface text in the page's language (the build sets <html lang>).
+  var LANG = (document.documentElement.lang || "en").slice(0, 2);
+  var TEXT = {
+    en: { months: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
+      days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], tickets: "tickets", details: "details",
+      noPast: "No past shows listed yet.", noUpcoming: "New dates coming soon.", sending: "Sending…",
+      sent: "Thanks, your message reached Nadav. He usually answers within a few days.",
+      failed: "The message didn't go through. Please email {email} directly.",
+      mailApp: "Your email app should open with the message ready. If it doesn't, write to {email}.",
+      play: "Play music", pause: "Pause music", spotify: "Spotify player" },
+    he: { months: ["ינו׳", "פבר׳", "מרץ", "אפר׳", "מאי", "יוני", "יולי", "אוג׳", "ספט׳", "אוק׳", "נוב׳", "דצמ׳"],
+      days: ["יום א׳", "יום ב׳", "יום ג׳", "יום ד׳", "יום ה׳", "יום ו׳", "שבת"], tickets: "כרטיסים", details: "פרטים",
+      noPast: "עוד לא נרשמו הופעות קודמות.", noUpcoming: "תאריכים חדשים יפורסמו בקרוב.", sending: "שולח…",
+      sent: "תודה, ההודעה הגיעה לנדב. בדרך כלל הוא עונה תוך כמה ימים.",
+      failed: "ההודעה לא נשלחה. אפשר לכתוב ישירות אל {email}.",
+      mailApp: "אפליקציית הדואר אמורה להיפתח עם ההודעה מוכנה. אם לא, כתבו אל {email}.",
+      play: "ניגון המוזיקה", pause: "השהיית המוזיקה", spotify: "נגן Spotify" },
+    es: { months: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+      days: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"], tickets: "entradas", details: "detalles",
+      noPast: "Todavía no hay conciertos anteriores.", noUpcoming: "Pronto habrá nuevas fechas.", sending: "Enviando…",
+      sent: "Gracias, tu mensaje le llegó a Nadav. Suele responder en pocos días.",
+      failed: "El mensaje no se pudo enviar. Escribe directamente a {email}.",
+      mailApp: "Tu aplicación de correo debería abrirse con el mensaje listo. Si no, escribe a {email}.",
+      play: "Reproducir la música", pause: "Pausar la música", spotify: "Reproductor de Spotify" }
+  };
+  var T = TEXT[LANG] || TEXT.en;
+  var MONTHS = T.months, WEEKDAYS = T.days;
+  // A concert field in this page's language, falling back to English (concerts.js holds title_he, city_es, ...).
+  function tr(g, field) { return (LANG !== "en" && g[field + "_" + LANG]) || g[field]; }
 
   function el(tag, attrs, children) {
     var n = document.createElement(tag);
@@ -39,20 +66,20 @@
       el("span", { class: "day", text: String(+p[2]) }),
       el("span", { class: "my", text: MONTHS[+p[1] - 1] + " " + p[0] })
     ]);
-    var where = [g.venue, g.city].filter(Boolean).join(", ");
+    var where = [tr(g, "venue"), tr(g, "city")].filter(Boolean).join(", ");
     var when = WEEKDAYS[d.getDay()] + (g.time ? " · " + g.time : "");
-    var line = [past ? "" : when, where, g.note].filter(Boolean).join(" · ");
+    var line = [past ? "" : when, where, tr(g, "note")].filter(Boolean).join(" · ");
     var main = el("div", { class: "gig-main" }, [
-      g.project && g.project !== g.title ? el("span", { class: "project", text: g.project.toLowerCase() }) : null,
-      el("h3", { text: g.title }),
+      g.project && g.project !== g.title ? el("span", { class: "project", text: tr(g, "project").toLowerCase() }) : null,
+      el("h3", { text: tr(g, "title") }),
       // One line under the title: day (upcoming), place and note
       line ? el("span", { class: "where", text: line }) : null
     ]);
     var act = null;
     if (!past) {
       // Tickets when on sale, else the concert's own page; nothing when neither exists yet.
-      if (g.tickets) act = el("a", { class: "btn", href: g.tickets, target: "_blank", rel: "noopener", text: "tickets" });
-      else if (g.info) act = el("a", { class: "btn ghost", href: g.info, target: "_blank", rel: "noopener", text: "details" });
+      if (g.tickets) act = el("a", { class: "btn", href: g.tickets, target: "_blank", rel: "noopener", text: T.tickets });
+      else if (g.info) act = el("a", { class: "btn ghost", href: g.info, target: "_blank", rel: "noopener", text: T.details });
     }
     return el("article", { class: "gig" + (past ? " past" : "") }, [dateBox, main, act ? el("div", { class: "gig-act" }, [act]) : null]);
   }
@@ -72,7 +99,7 @@
       box.textContent = "";
       if (!list.length) {
         box.appendChild(el("div", { class: "gigs-empty" }, [
-          el("p", { text: kind === "past" ? "No past shows listed yet." : "New dates coming soon." })
+          el("p", { text: kind === "past" ? T.noPast : T.noUpcoming })
         ]));
         return;
       }
@@ -122,7 +149,7 @@
       f.src = "https://open.spotify.com/embed/" + slot.getAttribute("data-spotify") + "?theme=0";
       f.height = slot.getAttribute("data-height") || "352";
       f.loading = "lazy";
-      f.title = slot.getAttribute("data-title") || "Spotify player";
+      f.title = slot.getAttribute("data-title") || T.spotify;
       f.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
       slot.textContent = "";
       slot.classList.add("loaded");
@@ -159,17 +186,17 @@
       if (!form.reportValidity()) return;
       var data = Object.fromEntries(new FormData(form).entries());
       if (SITE.FORM_ENDPOINT) {
-        status.className = "form-status"; status.textContent = "Sending…";
+        status.className = "form-status"; status.textContent = T.sending;
         fetch(SITE.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) })
-          .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); status.className = "form-status ok"; status.textContent = "Thanks, your message reached Nadav. He usually answers within a few days."; })
-          .catch(function () { status.className = "form-status"; status.textContent = "The message didn't go through. Please email " + SITE.email + " directly."; });
+          .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); status.className = "form-status ok"; status.textContent = T.sent; })
+          .catch(function () { status.className = "form-status"; status.textContent = T.failed.replace("{email}", SITE.email); });
         return;
       }
       var subject = "[" + data.topic + "] " + data.name;
       var body = data.message + "\n\n" + data.name + (data.email ? " · " + data.email : "");
       location.href = "mailto:" + SITE.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       status.className = "form-status";
-      status.textContent = "Your email app should open with the message ready. If it doesn't, write to " + SITE.email + ".";
+      status.textContent = T.mailApp.replace("{email}", SITE.email);
     });
   }
 
@@ -227,7 +254,7 @@
       var on = !a.paused;
       box.classList.toggle("on", on);
       btn.setAttribute("aria-pressed", on ? "true" : "false");
-      btn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+      btn.setAttribute("aria-label", on ? T.pause : T.play);
     }
     function waitForGesture() {
       box.classList.add("ask");

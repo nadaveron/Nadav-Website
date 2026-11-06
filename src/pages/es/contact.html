@@ -1,0 +1,35 @@
+<!-- {"title": "Contacto · Nadav Friedman", "description": "Contrata al percusionista Nadav Friedman para conciertos, grabaciones, producciones, clases particulares y clases magistrales.", "nav": "contact", "path": "/contact"} -->
+<section class="section contact-page" aria-labelledby="contact-title">
+  <div class="wrap contact-layout">
+    <h1 id="contact-title" class="sr-title">Contacto</h1>
+    <figure class="whole contact-photo">
+      <img src="assets/photos/contact-cymbal.jpg" alt="Primer plano de una baqueta apoyada sobre un platillo, en penumbra" width="1500" height="2000" fetchpriority="high">
+    </figure>
+    <form class="contact" id="contact-form" novalidate>
+      <div class="row2">
+        <div class="field"><label for="f-name">Nombre</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Correo electrónico</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field">
+        <label for="f-topic">¿De qué se trata?</label>
+        <select id="f-topic" name="topic">
+          <option data-key="session">Percusión para un concierto o una grabación</option>
+          <option data-key="bombaras">Contratar a Bombaras</option>
+          <option data-key="armon">Contratar al Itai Armon Ensemble</option>
+          <option data-key="production">Llevar Mirror o Alma de Bata a tu escenario</option>
+          <option data-key="new">Crear una producción nueva</option>
+          <option data-key="lessons">Clases</option>
+          <option data-key="workshop">Clase magistral o taller</option>
+          <option data-key="press">Prensa</option>
+          <option data-key="other">Otro tema</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-message">Mensaje</label><textarea id="f-message" name="message" required placeholder="Fecha, lugar y lo que tienes en mente"></textarea></div>
+      <div class="actions"><button class="btn" type="submit">Enviar mensaje</button></div>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+  <div class="wrap">
+    <div class="icons contact-icons">{{icons}}</div>
+  </div>
+</section>

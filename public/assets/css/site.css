@@ -80,7 +80,7 @@ em { font-style: italic; }
 .menu { display: none; }
 .menu summary { list-style: none; cursor: pointer; font-style: italic; font-size: 1.2rem; justify-self: end; }
 .menu summary::-webkit-details-marker { display: none; }
-@media (max-width: 1000px) {
+@media (max-width: 1120px) {
   .site-header .wrap { grid-template-columns: auto 1fr auto; min-height: 76px; }
   .site-header .nav, .site-header .icons { display: none; }
   .logo-link { justify-self: start; order: -1; }
@@ -481,3 +481,46 @@ main { overflow-x: clip; }
 /* Projects: title and jump links centred over the rule */
 .page-title.compact .copy h1 { text-align: center; }
 .page-title.compact .pill-list { justify-content: center; }
+
+/* ---------- Languages ---------- */
+/* Switcher: EN · עב · ES after the header icons, and at the top of the phone menu */
+.langs { display: flex; align-items: center; gap: 2px; margin-inline-start: 6px; padding-inline-start: 14px; border-inline-start: 1px solid var(--rule); }
+.langs a { display: inline-block; padding: 2px 6px; font-size: .95rem; letter-spacing: .04em; text-decoration: none; color: var(--tan-soft); border-bottom: 1px solid transparent; }
+.langs a:hover { color: var(--cream); }
+.langs a[aria-current="true"] { color: var(--cream); border-bottom-color: var(--tan); }
+.langs a[lang="he"] { font-family: "Frank Ruhl Libre", var(--f-text); letter-spacing: 0; }
+.menu-panel .langs { margin: 0; padding: 0; border: 0; gap: 8px; }
+.menu-panel .langs a { font-size: 1.1rem; }
+
+/* Hebrew: Latin words keep the site's Garamonds, Hebrew letters use Frank Ruhl Libre.
+   Hebrew has no true italic, so the site's italic touches become upright there. */
+html[lang="he"] { --f-head: "Cormorant Garamond", "Frank Ruhl Libre", serif; --f-text: "EB Garamond", "Frank Ruhl Libre", serif; }
+html[lang="he"] body { font-size: 1.12rem; }
+html[lang="he"] h1, html[lang="he"] h2, html[lang="he"] h3 { font-family: "Frank Ruhl Libre", serif; font-weight: 500; }
+html[lang="he"] h1 { line-height: 1.15; }
+html[lang="he"] :is(em, i, .kicker, .more, .credit, figcaption, .meta, .s, .project, .my, .roles, .quote, .tagline, label, .form-status, .menu summary, .gig-date .my, .listen-links span, .np > i) { font-style: normal; }
+html[lang="he"] em { font-weight: 500; }
+
+/* Right-to-left: the grids and alignment flip by themselves; these rules are tied to a side */
+html[dir="rtl"] .release .story { text-align: left; justify-items: start; }
+html[dir="rtl"] .release .story .prose { justify-items: start; }
+@media (max-width: 820px) { html[dir="rtl"] .release .story { text-align: center; justify-items: center; } html[dir="rtl"] .release .story .prose { justify-items: center; } }
+html[dir="rtl"] .hero::after { background: linear-gradient(270deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.35) 40%, rgba(0,0,0,0) 60%), linear-gradient(0deg, #000 0%, rgba(0,0,0,0) 20%); }
+@media (min-width: 821px) { html[dir="rtl"] .hero > img { left: 0; right: 16%; object-position: 70% 40%; transform: scaleX(-1); } }
+html[dir="rtl"] .hero .credit, html[dir="rtl"] .stage-hero .credit { right: auto; left: var(--gutter); }
+html[dir="rtl"] .quote-video::after { background: linear-gradient(0deg, #000 0%, rgba(0,0,0,.3) 26%, rgba(0,0,0,.3) 74%, #000 100%), linear-gradient(270deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.15) 70%); }
+html[dir="rtl"] .vstrip button { text-align: right; }
+html[dir="rtl"] .wa .qr span { text-align: right; }
+html[dir="rtl"] .book-photo figcaption { right: auto; left: 0; }
+html[dir="rtl"] .about-bio .bio-photo { float: right; margin: 6px 0 20px clamp(28px, 4vw, 56px); }
+@media (max-width: 760px) { html[dir="rtl"] .about-bio .bio-photo { float: none; margin: 0 auto 24px; } }
+html[dir="rtl"] .player { right: auto; left: max(16px, env(safe-area-inset-left)); padding: 8px 8px 8px 20px; }
+@media (max-width: 560px) { html[dir="rtl"] .player { padding-left: 16px; padding-right: 8px; } }
+html[dir="rtl"] .player .bar span { transform-origin: right; }
+html[dir="rtl"] .skip { left: auto; right: -999px; } html[dir="rtl"] .skip:focus { right: 12px; }
+/* Phone numbers, emails and links stay left-to-right inside Hebrew text */
+html[dir="rtl"] :is(a[href^="mailto"], a[href^="tel"], .ltr) { unicode-bidi: isolate; direction: ltr; }
+/* Spanish menu labels run longer: a little tighter so the header stays on one line */
+html[lang="es"] .site-header .wrap > .nav { gap: 4px 12px; }
+html[lang="es"] .site-header .wrap > .nav a { font-size: 1.02rem; }
+@media (max-width: 1240px) { html[lang="es"] .site-header .wrap > .icons { gap: 12px; } }

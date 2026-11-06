@@ -42,7 +42,7 @@ LANGS = {
         wa_updates="Novedades por WhatsApp", wa_kicker="El grupo de WhatsApp de Nadav", wa_title="Conciertos que valen la pena",
         wa_text="Únete para enterarte antes que nadie de los próximos conciertos y las nuevas producciones de Nadav, junto con sus recomendaciones personales de conciertos boutique de músicas del mundo en Israel. Pocos mensajes al mes, solo anuncios.",
         wa_join="Unirse al grupo", wa_qr_alt="Código QR que abre el grupo de novedades en WhatsApp", wa_scan="o escanéalo con la cámara del teléfono",
-        roles="Percusionista · Compositor · Educador", press="Dossier de prensa", play="Reproducir la música",
+        roles="Percusionista · Compositor · Educador", press="Kit de prensa", play="Reproducir la música",
         track="Shalosh", track_sub="Zohar Fresco · arreglo para batería de Nadav"),
 }
 

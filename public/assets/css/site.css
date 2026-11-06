@@ -493,11 +493,11 @@ main { overflow-x: clip; }
 .menu-panel .langs a { font-size: 1.1rem; }
 
 /* Hebrew: Latin words keep the site's Garamonds. Hebrew display type (headings, the
-   statement, names) uses Karantina, self-hosted for its Hebrew letters only and scaled up
+   statement, names) uses Amatic SC, self-hosted for its Hebrew letters only and scaled up
    to sit level with Cormorant; Hebrew body text uses Frank Ruhl Libre.
    Hebrew has no true italic, so the site's italic touches become upright there. */
-@font-face { font-family: "Karantina Site"; src: url("../fonts/karantina-400.woff2") format("woff2"); font-weight: 100 900; font-display: swap; size-adjust: 122%; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
-html[lang="he"] { --f-head: "Cormorant Garamond", "Karantina Site", serif; --f-text: "EB Garamond", "Frank Ruhl Libre", serif; }
+@font-face { font-family: "Hebrew Display"; src: url("../fonts/amatic-sc-700.woff2") format("woff2"); font-weight: 100 900; font-display: swap; size-adjust: 128%; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+html[lang="he"] { --f-head: "Cormorant Garamond", "Hebrew Display", serif; --f-text: "EB Garamond", "Frank Ruhl Libre", serif; }
 html[lang="he"] body { font-size: 1.12rem; }
 html[lang="he"] h1, html[lang="he"] h2, html[lang="he"] h3 { font-family: var(--f-head); font-weight: 500; letter-spacing: .01em; }
 html[lang="he"] h1 { line-height: 1.15; }

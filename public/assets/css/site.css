@@ -488,18 +488,18 @@ main { overflow-x: clip; }
 .langs a { display: inline-block; padding: 2px 6px; font-size: .95rem; letter-spacing: .04em; text-decoration: none; color: var(--tan-soft); border-bottom: 1px solid transparent; }
 .langs a:hover { color: var(--cream); }
 .langs a[aria-current="true"] { color: var(--cream); border-bottom-color: var(--tan); }
-.langs a[lang="he"] { font-family: "Frank Ruhl Libre", var(--f-text); letter-spacing: 0; }
+.langs a[lang="he"] { font-family: "Hebrew Serif", var(--f-text); letter-spacing: 0; }
 .menu-panel .langs { margin: 0; padding: 0; border: 0; gap: 8px; }
 .menu-panel .langs a { font-size: 1.1rem; }
 
-/* Hebrew: Latin words keep the site's Garamonds. Hebrew display type (headings, the
-   statement, names) uses Amatic SC, self-hosted for its Hebrew letters only and scaled up
-   to sit level with Cormorant; Hebrew body text uses Frank Ruhl Libre.
-   Hebrew has no true italic, so the site's italic touches become upright there. */
-@font-face { font-family: "Hebrew Display"; src: url("../fonts/amatic-sc-700.woff2") format("woff2"); font-weight: 100 900; font-display: swap; size-adjust: 128%; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
-html[lang="he"] { --f-head: "Cormorant Garamond", "Hebrew Display", serif; --f-text: "EB Garamond", "Frank Ruhl Libre", serif; }
+/* Hebrew: one family for all Hebrew text, Bona Nova, an old-style book serif that sits with
+   the Garamonds. Self-hosted for its Hebrew letters only, so Latin words keep the site's
+   Cormorant and EB Garamond. Hebrew has no true italic, so italic touches become upright. */
+@font-face { font-family: "Hebrew Serif"; src: url("../fonts/bona-nova-hebrew-400.woff2") format("woff2"); font-weight: 400 500; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+@font-face { font-family: "Hebrew Serif"; src: url("../fonts/bona-nova-hebrew-700.woff2") format("woff2"); font-weight: 600 700; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+html[lang="he"] { --f-head: "Cormorant Garamond", "Hebrew Serif", serif; --f-text: "EB Garamond", "Hebrew Serif", serif; }
 html[lang="he"] body { font-size: 1.12rem; }
-html[lang="he"] h1, html[lang="he"] h2, html[lang="he"] h3 { font-family: var(--f-head); font-weight: 500; letter-spacing: .01em; }
+html[lang="he"] h1, html[lang="he"] h2, html[lang="he"] h3 { font-weight: 500; }
 html[lang="he"] h1 { line-height: 1.15; }
 html[lang="he"] :is(em, i, .kicker, .more, .credit, figcaption, .meta, .s, .project, .my, .roles, .quote, .tagline, label, .form-status, .menu summary, .gig-date .my, .listen-links span, .np > i) { font-style: normal; }
 html[lang="he"] em { font-weight: 500; }

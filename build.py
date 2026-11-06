@@ -26,7 +26,7 @@ LANGS = {
         wa_join="Join the group", wa_qr_alt="QR code that opens the WhatsApp updates group", wa_scan="or scan it with your phone camera",
         roles="Percussionist · Composer · Educator", press="Press kit", play="Play music",
         track="Shalosh", track_sub="Zohar Fresco · drum set arrangement by Nadav"),
-    "he": dict(dir="rtl", prefix="he/", label="עב", name="עברית", og_locale="he_IL", fonts="&family=Frank+Ruhl+Libre:wght@400;500;600",
+    "he": dict(dir="rtl", prefix="he/", label="עב", name="עברית", og_locale="he_IL", fonts="",
         nav=dict(home="בית", live="הופעות", projects="פרויקטים", about="אודות", media="מדיה", study="לימוד", contact="יצירת קשר"),
         skip="דילוג לתוכן", menu="תפריט", menu_open="פתיחת התפריט", nav_aria="ראשי", home_aria="נדב פרידמן, דף הבית",
         lang_aria="שפה", job="נגן כלי הקשה", name_full="נדב פרידמן",

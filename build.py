@@ -33,7 +33,7 @@ LANGS = {
         wa_updates="עדכונים בוואטסאפ", wa_kicker="קבוצת הוואטסאפ של נדב", wa_title="הופעות ששווה לצאת מהבית בשבילן",
         wa_text="הצטרפו כדי לשמוע ראשונים על ההופעות וההפקות החדשות של נדב, יחד עם ההמלצות האישיות שלו להופעות בוטיק של מוזיקת עולם ברחבי הארץ. כמה הודעות בחודש, הודעות בלבד.",
         wa_join="הצטרפות לקבוצה", wa_qr_alt="קוד QR שפותח את קבוצת העדכונים בוואטסאפ", wa_scan="או סרקו אותו במצלמת הטלפון",
-        roles="נגן כלי הקשה · מלחין · מורה", press="חומרים לעיתונות", play="ניגון המוזיקה",
+        roles="נגן כלי הקשה · מלחין · מורה", press="Press kit", play="ניגון המוזיקה",
         track="שלוש", track_sub="זהר פרסקו · עיבוד למערכת תופים: נדב"),
     "es": dict(dir="ltr", prefix="es/", label="ES", name="Español", og_locale="es_ES", fonts="",
         nav=dict(home="Inicio", live="Conciertos", projects="Proyectos", about="Biografía", media="Multimedia", study="Clases", contact="Contacto"),

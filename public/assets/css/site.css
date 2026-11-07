@@ -492,11 +492,11 @@ main { overflow-x: clip; }
 .menu-panel .langs { margin: 0; padding: 0; border: 0; gap: 8px; }
 .menu-panel .langs a { font-size: 1.1rem; }
 
-/* Hebrew: one family for all Hebrew text, Bona Nova, an old-style book serif that sits with
-   the Garamonds. Self-hosted for its Hebrew letters only, so Latin words keep the site's
+/* Hebrew: one family for all Hebrew text, Shofar (Culmus project, GPL with font exception,
+   see fonts/LICENSE-Culmus.txt), a calligraphic serif that sits with the Garamonds. Self-hosted for its Hebrew letters only, so Latin words keep the site's
    Cormorant and EB Garamond. Hebrew has no true italic, so italic touches become upright. */
-@font-face { font-family: "Hebrew Serif"; src: url("../fonts/bona-nova-hebrew-400.woff2") format("woff2"); font-weight: 400 500; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
-@font-face { font-family: "Hebrew Serif"; src: url("../fonts/bona-nova-hebrew-700.woff2") format("woff2"); font-weight: 600 700; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+@font-face { font-family: "Hebrew Serif"; src: url("../fonts/shofar-hebrew-regular.woff2") format("woff2"); font-weight: 400 500; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+@font-face { font-family: "Hebrew Serif"; src: url("../fonts/shofar-hebrew-demibold.woff2") format("woff2"); font-weight: 600 700; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
 html[lang="he"] { --f-head: "Cormorant Garamond", "Hebrew Serif", serif; --f-text: "EB Garamond", "Hebrew Serif", serif; }
 html[lang="he"] body { font-size: 1.12rem; }
 html[lang="he"] h1, html[lang="he"] h2, html[lang="he"] h3 { font-weight: 500; }

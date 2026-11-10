@@ -95,6 +95,19 @@ window.CONCERTS = [
     "city_he": "חיפה"
   },
   {
+    "date": "2026-11-15",
+    "time": "",
+    "title": "Kululam",
+    "project": "",
+    "venue": "",
+    "city": "Eilat",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "קולולם",
+    "city_he": "אילת"
+  },
+  {
     "date": "2026-11-13",
     "time": "",
     "title": "Rotem Cohen",

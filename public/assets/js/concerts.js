@@ -24,19 +24,6 @@ window.CONCERTS = [
     "city_he": "אשקלון"
   },
   {
-    "date": "2027-01-21",
-    "time": "",
-    "title": "Rotem Cohen",
-    "project": "",
-    "venue": "",
-    "city": "Eilat",
-    "tickets": "",
-    "info": "",
-    "note": "",
-    "title_he": "רותם כהן",
-    "city_he": "אילת"
-  },
-  {
     "date": "2026-12-24",
     "time": "20:30",
     "title": "Rotem Cohen",

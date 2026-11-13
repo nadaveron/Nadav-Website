@@ -24,6 +24,18 @@ window.CONCERTS = [
     "city_he": "אשקלון"
   },
   {
+    "date": "2027-01-14",
+    "time": "",
+    "title": "Itai Armon Ensemble",
+    "project": "",
+    "venue": "",
+    "city": "",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון"
+  },
+  {
     "date": "2026-12-24",
     "time": "20:30",
     "title": "Rotem Cohen",
@@ -66,6 +78,18 @@ window.CONCERTS = [
     "city_he": "ירושלים",
     "title_es": "Haflah andalusí",
     "city_es": "Jerusalén"
+  },
+  {
+    "date": "2026-12-04",
+    "time": "",
+    "title": "Itai Armon Ensemble",
+    "project": "",
+    "venue": "",
+    "city": "",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "האנסמבל של איתי ארמון"
   },
   {
     "date": "2026-11-26",

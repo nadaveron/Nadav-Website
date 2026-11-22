@@ -51,6 +51,20 @@ window.CONCERTS = [
     "venue_es": "Centro Cultural de Karmiel"
   },
   {
+    "date": "2026-12-18",
+    "time": "",
+    "title": "Bombaras",
+    "project": "Bombaras",
+    "venue": "HaMigdalor",
+    "city": "",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "בומבראס",
+    "project_he": "בומבראס",
+    "venue_he": "המגדלור"
+  },
+  {
     "date": "2026-12-17",
     "time": "",
     "title": "Yaara Be'eri",

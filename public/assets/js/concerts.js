@@ -36,6 +36,21 @@ window.CONCERTS = [
     "title_he": "האנסמבל של איתי ארמון"
   },
   {
+    "date": "2027-01-06",
+    "time": "",
+    "title": "Bombaras",
+    "project": "Bombaras",
+    "venue": "TRB",
+    "city": "Tel Aviv",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "בומבראס",
+    "project_he": "בומבראס",
+    "venue_he": "טרב",
+    "city_he": "תל אביב"
+  },
+  {
     "date": "2026-12-24",
     "time": "20:30",
     "title": "Rotem Cohen",

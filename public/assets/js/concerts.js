@@ -93,6 +93,18 @@ window.CONCERTS = [
     "city_he": "מצפה רמון"
   },
   {
+    "date": "2026-12-16",
+    "time": "",
+    "title": "Shimon Buskila",
+    "project": "",
+    "venue": "",
+    "city": "",
+    "tickets": "",
+    "info": "",
+    "note": "",
+    "title_he": "שמעון בוסקילה"
+  },
+  {
     "date": "2026-12-10",
     "time": "",
     "title": "Andalusian Haflah",
@@ -109,7 +121,7 @@ window.CONCERTS = [
     "city_es": "Jerusalén"
   },
   {
-    "date": "2026-12-04",
+    "date": "2026-12-09",
     "time": "",
     "title": "Itai Armon Ensemble",
     "project": "",
@@ -121,18 +133,16 @@ window.CONCERTS = [
     "title_he": "האנסמבל של איתי ארמון"
   },
   {
-    "date": "2026-11-26",
+    "date": "2026-12-04",
     "time": "",
-    "title": "Rotem Cohen",
+    "title": "Itai Armon Ensemble",
     "project": "",
-    "venue": "Zappa",
-    "city": "Haifa",
+    "venue": "",
+    "city": "",
     "tickets": "",
     "info": "",
     "note": "",
-    "title_he": "רותם כהן",
-    "venue_he": "זאפה",
-    "city_he": "חיפה"
+    "title_he": "האנסמבל של איתי ארמון"
   },
   {
     "date": "2026-11-15",

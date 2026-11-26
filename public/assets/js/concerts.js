@@ -133,18 +133,6 @@ window.CONCERTS = [
     "title_he": "האנסמבל של איתי ארמון"
   },
   {
-    "date": "2026-12-04",
-    "time": "",
-    "title": "Itai Armon Ensemble",
-    "project": "",
-    "venue": "",
-    "city": "",
-    "tickets": "",
-    "info": "",
-    "note": "",
-    "title_he": "האנסמבל של איתי ארמון"
-  },
-  {
     "date": "2026-11-15",
     "time": "",
     "title": "Kululam",

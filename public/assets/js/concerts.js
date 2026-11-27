@@ -457,18 +457,5 @@ window.CONCERTS = [
     "note": "",
     "title_he": "רותם כהן",
     "city_he": "יקנעם"
-  },
-  {
-    "date": "2026-08-26",
-    "time": "",
-    "title": "Shimon Buskila",
-    "project": "",
-    "venue": "",
-    "city": "Nof HaGalil",
-    "tickets": "",
-    "info": "",
-    "note": "",
-    "title_he": "שמעון בוסקילה",
-    "city_he": "נוף הגליל"
   }
 ];
